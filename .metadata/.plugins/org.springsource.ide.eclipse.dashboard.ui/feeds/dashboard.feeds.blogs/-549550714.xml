@@ -5,7 +5,38 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2022-10-15T07:00:00Z</updated>
+  <updated>2022-10-16T07:00:00Z</updated>
+  <entry>
+    <title>Spring at JavaOne 2022</title>
+    <link rel="alternate" href="https://spring.io/blog/2022/10/16/spring-at-javaone-2022" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2022-10-16:4947</id>
+    <updated>2022-10-16T07:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! It&amp;rsquo;s Sunday the 16th of October as I write this and I&amp;rsquo;m winging my way to sunny Las Vegas, Nevada, where I&amp;rsquo;ll be attending (and presenting at) the first JavaOne show in &lt;em&gt;years&lt;/em&gt;! It didn&amp;rsquo;t exist as the JavaOne we know and love for years, even before the pandemic interrupted life as we know it worldwide. So this isn&amp;rsquo;t just the first JavaOne since 2019, it&amp;rsquo;s [the first JavaOne since 2017](&lt;a href="https://www.infoq.com/news/2018/04/oracle-kills-java-one/_!"&gt;https://www.infoq.com/news/2018/04/oracle-kills-java-one/_!&lt;/a&gt; I can&amp;rsquo;t wait to be there, to see the amazing community, to soak up the sun and fun with my teammates and friends in the ecosystem. And we want to see you, too.&lt;/p&gt;
+&lt;p&gt;There are a few of us doing talks from the Spring team and we&amp;rsquo;d love to see you!&lt;/p&gt;
+&lt;p&gt;First of all: we have a booth, so join us there.&lt;/p&gt;
+&lt;p&gt;There are going to be a bunch of great talks from those of us on the Spring team and in the Spring community. Here&amp;rsquo;s a list of some of the ones I&amp;rsquo;m interested in seeing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I&amp;rsquo;ll be doing my talk, &lt;em&gt;Kubernetes Native Java&lt;/em&gt; [LRN1401], looking at all the latest and greatest in the Spring ecosystem, including Spring Boot 3 and Spring Framework 6, on&lt;/li&gt;
+  &lt;li&gt;Observability: Beyond the Three Pillars with Spring [LIT3834] with Jonatan Ivanov and Josh Cummings, Spring team&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;To Production and Beyond: Metrics with Micrometer&lt;/em&gt; [LRN3692] by Erin Schnabel, RedHat, and Jonatan Ivanov, Spring team&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Das Boot: Diving into Debugging Spring Boot Applications&lt;/em&gt; [LRN1402] by Mark Heckler, Microsoft&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;JHipster: Learn How to Contribute and Help Us Upgrade to Spring Boot 3&lt;/em&gt; [CHA4945] by Matt Raible, Okta&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;A Stateful Spring Boot Microservice Using Spring Data, Hibernate, and JSON&lt;/em&gt; [LRN2797] by Michael McMahon&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Oracle Autonomous Database and Spring Boot&lt;/em&gt; [HOL3736] by Andres Almiray, Oracle&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Rapid Full Stack Development with JHipster and Spring Native&lt;/em&gt; [LRN2605] by Alina Yurenko, Oracle&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;React + SpringBoot Microservice + Autonomous DB = Native Cloud Java App&lt;/em&gt; [HOL2798] by Kuassi Mensah&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Micro Frontends for Java Developers&lt;/em&gt; [LRN1392] by Matt Raible&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Reactive?A New Hope: Learn from a Performance History&lt;/em&gt; [LIT3843] by Alberto Salazar&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Batch Processing Cloud Apps with Java&lt;/em&gt; [LRN3686] by Rodrigo Graciano and Elder Moraes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;m sure there are countless others worth your time, too! Either way, I hope we&amp;rsquo;ll see you there! &lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re not able to meet us at JavaOne this week, that&amp;rsquo;s OK - there&amp;rsquo;s still time to join the Spring team and larger Java ecosystem for &lt;a href="https://springone.io"&gt;SpringOne&lt;/a&gt;, being held 6-8 December, 2022, in sunny San Francisco, CA, 94105! Join us! (Psst.: If you register now, there¡¯s a &lt;em&gt;$200&lt;/em&gt; discount from the pass price with this code &lt;code&gt;S1VM22_Advocate_200&lt;/code&gt;.)&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Learn more about Spring Framework 6 and Spring Boot 3 in these two great talks from Devoxx 2022</title>
     <link rel="alternate" href="https://spring.io/blog/2022/10/15/learn-more-about-spring-framework-6-and-spring-boot-3-in-these-two-great-talks-from-devoxx-2022" />
@@ -23,6 +54,7 @@
 &lt;p&gt;&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/TS4DpYSmfXk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
 &lt;p&gt;NB: please ignore the metadata for the YouTube videos. Both talks feature both speakers, and there is no mention whatsoever of React and JavaScript and the like. I think that was a metadata issue with the publication of the videos on YouTube, which will hopefully be resolved. &lt;/p&gt;
 &lt;p&gt;Enjoy! &lt;/p&gt;
+&lt;p&gt;If you missed this event, that&amp;rsquo;s OK - there&amp;rsquo;s still time to join the Spring team and larger Java ecosystem for SpringOne, being held 6-8 December, 2022, in sunny San Francisco, CA, 94105! Join us! (Psst.: If you register now, there¡¯s a $200 discount from the pass price with this code S1VM22_Advocate_200.)&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
   <entry>
@@ -64,8 +96,9 @@
     </author>
     <id>tag:spring.io,2022-10-13:4944</id>
     <updated>2022-10-13T06:00:00Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment Josh Long (@starbuxman) looks at the latest and greatest in Spring Boot 3 AOT, then talks to Google&amp;rsquo;s Josh Suereth (@jsuereth) about observability with OpenTelemetry, building better build tools, and so much more. &lt;/p&gt;
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment, Josh Long (@starbuxman) looks at the latest and greatest in Spring Boot 3 AOT, then talks to Google&amp;rsquo;s Josh Suereth (@jsuereth) about observability with OpenTelemetry, building better build tools, and so much more. &lt;/p&gt;
 &lt;iframe title="Google mad scientist Josh Suereth on Observability with OpenTelemetry, building better build tools, and so much more " allowtransparency="true" height="150" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=jsrsi-12e8472-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7"&gt;&lt;/iframe&gt;
+&lt;p&gt;Want to learn more about Spring Boot and the wider ecosystem? SpringOne 2022 is almost here! If you want a chance to learn from the source, I hope you¡¯ll join us 6-8 December 2022, right here in my hometown of San Francisco, my favorite west coast city in the USA. (Psst.: If you register now, there¡¯s a $200 discount from the pass price with this code S1VM22_Advocate_200.)&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
   <entry>
@@ -1745,28 +1778,6 @@ dependencies {&#xD;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/GF5IJGwpY5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;h2&gt;&lt;a href="#conclusion" class="anchor" name="conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Do you know what&amp;rsquo;s crazy? This list doesn&amp;rsquo;t come close to being exhaustive! I guess we&amp;rsquo;ve all got the SpringOne we want to see. What does yours look like?&lt;/p&gt;
 &lt;p&gt;Haven&amp;rsquo;t you gotten your ticket yet? Register now for SpringOne, running 6-8 December 2022 in San Francisco, my favorite west coast city in the USA, and my hometown. If you register now, there&amp;rsquo;s a $200 &lt;em&gt;discount&lt;/em&gt; from the pass price with this code &lt;code&gt;S1VM22_Advocate_200&lt;/code&gt;. I can&amp;rsquo;t wait to see you there. &lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 3.0.0-M5 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2022/09/22/spring-boot-3-0-0-m5-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Scott Frederick</name>
-    </author>
-    <id>tag:spring.io,2022-09-22:4926</id>
-    <updated>2022-09-22T22:30:55Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I&amp;rsquo;m happy to announce that Spring Boot &lt;code&gt;3.0.0-M5&lt;/code&gt; has been released and is now available from &lt;a href="https://repo.spring.io/milestone"&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v3.0.0-M5"&gt;153 enhancements, documentation improvements, dependency upgrades, and bug fixes&lt;/a&gt;. Notable new features include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Improved Ahead-of-Time (AOT) processing and native image support&lt;/li&gt;
-  &lt;li&gt;Improved actuator endpoints sanitization&lt;/li&gt;
-  &lt;li&gt;Jersey support re-instated&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Please see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0.0-M5-Release-Notes"&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
-&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="https://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="https://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-boot/docs/3.0.0-M5/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
