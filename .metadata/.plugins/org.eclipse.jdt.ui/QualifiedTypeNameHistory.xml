@@ -23,4 +23,6 @@
     <fullyQualifiedTypeName name="org.springframework.test.context.TestExecutionListeners"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer"/>
+    <fullyQualifiedTypeName name="org.zerock.config.RootConfig"/>
 </qualifiedTypeNameHistroy>
