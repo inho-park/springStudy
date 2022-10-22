@@ -2,6 +2,8 @@ package org.zerock.config;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,5 +26,19 @@ public class RootConfig {
 		DataSource dataSource = new HikariDataSource(hikariconfig);
 		
 		return dataSource;
+	}
+	
+	@Bean
+	public SqlSessionFactory sqlSessionFactory() {
+		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+		sqlSessionFactory.setDataSource(dataSource()); // dataSource() => Bean
+		SqlSessionFactory factory = null;
+		try {
+			factory = (SqlSessionFactory)sqlSessionFactory.getObject();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return factory;
 	}
 }
