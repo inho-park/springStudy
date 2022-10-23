@@ -11,4 +11,6 @@ public interface TimeMapper {
     
     @Select("SELECT sysdate FROM dual")
     public String getTime3();
+    
+    public String getTime4();
 }

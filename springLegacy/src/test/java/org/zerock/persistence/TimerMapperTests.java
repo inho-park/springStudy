@@ -14,23 +14,37 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class TimerMapperTests {
+    int cnt =0;
     
     @Setter(onMethod_ = {@Autowired})
     private TimeMapper timeMapper;
     
     @Test
     public void testGetTime() {
-        log.info("timeMapper.getClass().getName() : "+timeMapper.getClass().getName());
         log.info("timeMapper.getTime() : "+timeMapper.getTime());
+        log.warn("Count : "+cnt);
+        cnt++;
     }
 
     @Test
     public void testGetTime2() {
         log.info("timeMapper.getTime2() : "+timeMapper.getTime2());
+        log.warn("Count : "+cnt);
+        cnt++;
     }
     
     @Test
     public void testGetTime3() {
+        log.info("timeMapper.getClass().getName() : "+timeMapper.getClass().getName());
         log.info("timeMapper.getTime3() : "+timeMapper.getTime3());
+        log.warn("Count : "+cnt);
+        cnt++;
+    }
+    
+    @Test
+    public void testGetTime4() {
+        log.info("timeMapper.getTime4() : "+timeMapper.getTime4());
+        log.warn("Count : "+cnt);
+        cnt++;
     }
 }
