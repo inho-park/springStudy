@@ -104,7 +104,7 @@ As &lt;code&gt;OrderInternal&lt;/code&gt; does not reside in the application mod
 &lt;div class="paragraph"&gt;
 &lt;p&gt;The verification as well as the underlying analysis of the application module model are implemented by using &lt;a href="https://www.archunit.org/"&gt;ArchUnit&lt;/a&gt;.
 It will reject cyclic dependencies between application modules, access to types considered internal (as per the definition above), and, optionally, allow only references to modules explicitly allow-listed by using &lt;code&gt;@ApplicationModule(allowedDependencies = ¡¦)&lt;/code&gt; on the application modules &lt;code&gt;package-info.java&lt;/code&gt;.
-For more information on how to define application module boundaries and allowed dependencies between them in the link, see the &lt;a href="https://docs.spring.io/spring-modulith/docs/0.1.0-M1/reference/html/##fundamentals.modules"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
+For more information on how to define application module boundaries and allowed dependencies between them in the link, see the &lt;a href="https://docs.spring.io/spring-modulith/docs/0.1.0-M1/reference/html/#fundamentals.modules"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -232,7 +232,7 @@ Also, be sure to follow us &lt;a href="https://twitter.com/springmodulith"&gt;on
 &lt;h2 id="about-moduliths"&gt;&lt;a class="anchor" href="#about-moduliths"&gt;&lt;/a&gt;About Moduliths&lt;/h2&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Modulith (no trailing "s") is the continuation of the &lt;a href="http://www.moduliths.org"&gt;Moduliths (with trailing "s") project&lt;/a&gt; but using Spring Boot 3.0, Framework 6, Java 17, and JakartaEE 9 as the baseline.
+&lt;p&gt;Spring Modulith (no trailing "s") is the continuation of the &lt;a href="https://github.com/moduliths/moduliths"&gt;Moduliths (with trailing "s") project&lt;/a&gt; but using Spring Boot 3.0, Framework 6, Java 17, and JakartaEE 9 as the baseline.
 The old Moduliths project is currently available in version 1.3, is compatible with Spring Boot 2.7, and will be maintained as long as the corresponding Boot generation.
 We have used the experience gained with it over the last two years, streamlined a few abstractions, tweaked a couple of defaults here and there, and decided to start with a more state-of-the-art baseline.
 For more detailed guidance on how to migrate to Spring Modulith, see the Spring Modulith &lt;a href="https://docs.spring.io/spring-modulith/docs/0.1.0-M1/reference/html/#appendix.migrating-from-moduliths"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
@@ -1234,12 +1234,6 @@ class MyConfiguration {
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="limitations"&gt;&lt;a class="anchor" href="#limitations"&gt;&lt;/a&gt;Limitations&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The Spring Boot AutoConfiguration for WebMvc Observability is not yet ready. As a result, we need to set things up manually. For more information, see this &lt;a href="https://github.com/spring-projects/spring-boot/issues/32538"&gt;issue&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sect1"&gt;
@@ -1370,23 +1364,9 @@ class MyConfiguration {
 &lt;div class="paragraph"&gt;
 &lt;p&gt;To build the applications, you need GraalVM on your path. If you use &lt;code&gt;SDKMan&lt;/code&gt;, invoke the following:&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You can skip this section if Bellsofr Liberica Native Image Kit 22.3 is already present in &lt;code&gt;SDKMan&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
-&lt;pre&gt;$ # First download the 22.3 version of Bellsoft Liberica Native Image Kit 22.3 from https://bell-sw.com/pages/downloads/native-image-kit/#/nik-22-17-ea
-$ # Unpack the Kit (e.g to ~/foo/bar/22.3/ where ~/foo/bar/22.3/ would be the root of the JDK installation)
-$ # Use SDKMan to install the kit
-$ sdk install java 22.3.r17-nik  ~/foo/bar/22.3/&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Use the installed SDK&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre&gt;$ sdk use java 22.3.r17-nik&lt;/pre&gt;
+&lt;pre&gt;sdk install java 22.3.r17.ea-nik&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
@@ -1466,14 +1446,11 @@ $ sdk install java 22.3.r17-nik  ~/foo/bar/22.3/&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;You can check Grafana for metrics and traces. Read the &lt;a href="#native-support-limitations"&gt;Native Support Limitations&lt;/a&gt; section on why you won&amp;#8217;t find any pushed logs to Loki.&lt;/p&gt;
+&lt;p&gt;You can check Grafana for metrics, traces and logs!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sect2"&gt;
 &lt;h3 id="native-support-limitations"&gt;&lt;a class="anchor" href="#native-support-limitations"&gt;&lt;/a&gt;Native Support Limitations&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You will not see logs being pushed to Loki just yet. For more information, look into &lt;a href="https://github.com/spring-projects/spring-boot/issues/25847"&gt;this issue&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;On the client side, we need to provide the &lt;code&gt;reflect-config.js&lt;/code&gt; configuration manually. For more information, see &lt;a href="https://github.com/open-telemetry/opentelemetry-java/pull/4832"&gt;this PR&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
