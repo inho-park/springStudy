@@ -29,5 +29,13 @@
     <fullyQualifiedTypeName name="lombok.extern.log4j.Log4j"/>
     <fullyQualifiedTypeName name="org.junit.Test"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.InitBinder"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.WebDataBinder"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.propertyeditors.CustomDateEditor"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.zerock.domain.TodoDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.format.annotation.DateTimeFormat"/>
 </qualifiedTypeNameHistroy>
