@@ -1,5 +1,8 @@
 package com.zerock.config;
 
+import javax.servlet.ServletRegistration;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -21,4 +24,12 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		// TODO Auto-generated method stub
 		return new String[] {"/"};
 	}
+
+	@Override
+	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+		// TODO Auto-generated method stub
+		registration.setInitParameter("throwExceptionIfNoFound", "true");
+	}
+	
+	
 }
