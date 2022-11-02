@@ -95,7 +95,7 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- @Inject -->
