@@ -33,6 +33,8 @@ public class BoardControllerTests {
 	@Setter(onMethod_ = @Autowired)
 	private WebApplicationContext ctx;
 	
+	// 쉽게 말해 가짜 MVC 
+	// 가짜로 URL 과 파라미터를 브라우저에서 사용하는 것처럼 만들어서 Controller 를 실행
 	private MockMvc mockMvc;
 	
 	@Before //JUnit 어노테이션 중 하나로
@@ -52,5 +54,31 @@ public class BoardControllerTests {
 			.andReturn()
 			.getModelAndView()
 			.getModelMap());
+	}
+	
+//	@Test
+//	public void testRegister() throws Exception {
+//		
+//		String resultPage = mockMvc
+//							.perform(MockMvcRequestBuilders
+//									.post("/board/register")
+//									.param("title", "테스트 새글 제목")
+//									.param("content","테스트 새글 내용")
+//									.param("writer", "테스트 새작가"))
+//							.andReturn().getModelAndView().getViewName();
+//		
+//		log.info("resultPage.........................................");
+//		log.info(resultPage);
+//	}
+	
+	@Test
+	public void testGet() throws Exception {
+		
+		log.info(mockMvc.perform(MockMvcRequestBuilders
+				.get("/board/get")
+				.param("bno", "2"))
+				.andReturn()
+				.getModelAndView()
+				.getModelMap());
 	}
 }
