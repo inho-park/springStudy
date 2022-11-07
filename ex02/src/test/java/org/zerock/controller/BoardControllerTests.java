@@ -44,6 +44,7 @@ public class BoardControllerTests {
 	// @BeforeClass 와 @AfterClass 는 
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
+		log.info("MockMvcBuilders.webAppContextSetup........................");
 	}
 	
 	@Test
