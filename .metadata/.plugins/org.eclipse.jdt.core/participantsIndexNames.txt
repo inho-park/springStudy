@@ -3,6 +3,8 @@ D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1076445253.ind
 \springLegacy\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\736690726.index
 \jex01\src\main\java
+D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1206470954.index
+\ex02\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2694948808.index
 \ex02\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1163983507.index
