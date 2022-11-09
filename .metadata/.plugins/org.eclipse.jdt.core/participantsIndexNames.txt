@@ -1,6 +1,8 @@
 INDEX VERSION 1.131
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1076445253.index
 \springLegacy\src\main\java
+D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\465248314.index
+\ex02_\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\736690726.index
 \jex01\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1206470954.index
@@ -13,6 +15,8 @@ D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2560849400.ind
 \exJava\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2415907875.index
 \ex01\src\main\java
+D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\789516969.index
+\ex02_\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1447609312.index
 \jex01\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3012140731.index
