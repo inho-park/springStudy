@@ -38,6 +38,12 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	// 연결을 위한 임시 매핑 주소
+	@GetMapping("/register")
+	public void register() {
+		
+	}
+	
 	@GetMapping("/get")
 	public void get(@RequestParam("bno") Long bno, Model model) {
 		
