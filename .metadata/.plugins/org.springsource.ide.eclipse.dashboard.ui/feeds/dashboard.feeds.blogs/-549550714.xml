@@ -5,7 +5,34 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2022-11-09T13:10:45Z</updated>
+  <updated>2022-11-09T18:00:00Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: RabbitMQ engineer Arnaud Cogolu?gnes on the new and novel in RabbitMQ</title>
+    <link rel="alternate" href="https://spring.io/blog/2022/11/09/a-bootiful-podcast-rabbitmq-engineer-arnaud-cogolu-gnes-on-the-new-and-novel-in-rabbitmq" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2022-11-09:4989</id>
+    <updated>2022-11-09T18:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! In this episode, &lt;a href="https://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks to RabbitMQ engineer &lt;a href="https://mobile.twitter.com/acogoluegnes"&gt;Arnaud Cogolu?gnes (@acogoluegnes)&lt;/a&gt; on the new and novel in RabbitMQ&lt;/p&gt;
+&lt;iframe title="RabbitMQ engineer Arnaud Cogolu?gnes on the new and novel in RabbitMQ" allowtransparency="true" height="150" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=shi9b-130def7-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Security 6.0.0-RC2 is available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2022/11/09/spring-security-6-0-0-rc2-is-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marcus Hert Da Coregio</name>
+    </author>
+    <id>tag:spring.io,2022-11-09:4988</id>
+    <updated>2022-11-09T18:00:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Security &lt;code&gt;6.0.0-RC2&lt;/code&gt; is available now.&lt;/p&gt;
+&lt;p&gt;Spring Security &lt;code&gt;6.0.0-RC2&lt;/code&gt; includes &lt;a href="https://github.com/spring-projects/spring-security/releases/tag/6.0.0-RC2"&gt;fixes and improvements to the documentation&lt;/a&gt;. Stay tuned for the announcement of Spring Boot &lt;code&gt;3.0.0-RC2&lt;/code&gt; later this week!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://projects.spring.io/spring-security/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-security"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-security/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-security/reference/6.0.0-RC2/index.html"&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Spring Framework 6.0.0-RC4 available now</title>
     <link rel="alternate" href="https://spring.io/blog/2022/11/09/spring-framework-6-0-0-rc4-available-now" />
@@ -784,118 +811,6 @@ dependencies {&#xD;
     <content type="html">&lt;p&gt;Hi, Spring fans! In this installment, we begin a journey to Spring Boot 3, due end of November 2022. In this installment, we&amp;rsquo;ll look - at a very high level - at some of the amazing features in Spring Framework 6, which underpins Spring Boot 3.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/aUm5WZjh8RA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;p&gt;Want to learn more about Spring Framework 6 and Spring Boot 3? Join us at &lt;a href="https://springone.io"&gt;SpringOne 2022&lt;/a&gt;! use the code &lt;code&gt;S1VM22_Advocate_200&lt;/code&gt; for $200 off the price of admission!&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tools 4.16.1 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2022/10/26/spring-tools-4-16-1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Martin Lippert</name>
-    </author>
-    <id>tag:spring.io,2022-10-26:4968</id>
-    <updated>2022-10-26T07:00:00Z</updated>
-    <content type="html">&lt;p&gt;Dear Spring Community,&lt;/p&gt;
-&lt;p&gt;I am happy to announce the 4.16.1 release of the Spring Tools 4 for Eclipse, Visual Studio Code, and Theia.&lt;/p&gt;&lt;h4&gt;&lt;a href="#major-changes-to-the-spring-tools-4-for-eclipse-distribution" class="anchor" name="major-changes-to-the-spring-tools-4-for-eclipse-distribution"&gt;&lt;/a&gt;major changes to the Spring Tools 4 for Eclipse distribution&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;early access builds available for Spring Tools 4 on Eclipse 2022-12 milestones&lt;/li&gt;
-&lt;/ul&gt;&lt;h4&gt;&lt;a href="#important-note-for-upgrading-from-a-release-prior-to-4-16-0-on-eclipse" class="anchor" name="important-note-for-upgrading-from-a-release-prior-to-4-16-0-on-eclipse"&gt;&lt;/a&gt;important note for upgrading from a release prior to 4.16.0 on Eclipse&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;If you are upgrading an existing Spring Tools 4 for Eclipse distribution 4.15.3 or older to 4.16.1, please take a look at the necessary manual &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#important-note-for-upgrading-from-a-previous-installation-on-eclipse"&gt;steps described for the upgrade to 4.16.0&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;&lt;h4&gt;&lt;a href="#fixes-and-improvements" class="anchor" name="fixes-and-improvements"&gt;&lt;/a&gt;fixes and improvements&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; fixed: Spring XML Config support does not show symbols with scope &amp;ldquo;File&amp;rdquo; (&lt;a href="https://github.com/spring-projects/sts4/issues/860"&gt;#860&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; fixed: [open-rewrite] exception when executing quick fix for project (&lt;a href="https://github.com/spring-projects/sts4/issues/853"&gt;#853&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;(Spring Boot)&lt;/em&gt; fixed: [refactoring] quick fix to convert autowired field to constructor param shows up even if the constructor param already exists (&lt;a href="https://github.com/spring-projects/sts4/issues/815"&gt;#815&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;(VSCode)&lt;/em&gt; fixed: Vscode Spring Boot Tools 1.39.0 prevents Java project from Running/Debugging (&lt;a href="https://github.com/spring-projects/sts4/issues/847"&gt;#847&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; fixed: Web Tools Platform (WTP) validation is activated by default (&lt;a href="https://github.com/spring-projects/sts4/issues/859"&gt;#859&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; fixed: ask user to save dirty editors before deploying on docker (&lt;a href="https://github.com/spring-projects/sts4/issues/803"&gt;#803&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To download the distribution for Eclipse and find links to the marketplace entries for Visual Studio Code and Theia, please go visit:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Tools 4: &lt;a href="https://spring.io/tools/"&gt;https://spring.io/tools/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Detailed changes can be found here: &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#2022-10-26-4161-release-incl-language-servers-version-1400"&gt;https://github.com/spring-projects/sts4/wiki/Changelog#2022-10-26-4161-release-incl-language-servers-version-1400&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Spring Tools 4.17.0 is scheduled to be released in early December 2022.&lt;/p&gt;
-&lt;p&gt;Enjoy!&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Integration 6.0.0-RC1 Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2022/10/25/spring-integration-6-0-0-rc1-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Artem Bilan</name>
-    </author>
-    <id>tag:spring.io,2022-10-25:4967</id>
-    <updated>2022-10-25T13:55:35Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;Dear Spring community,&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;I was so eager to find and fix bugs in the latest Spring Integration release, that missed to announce a &lt;code&gt;6.0 RC1&lt;/code&gt; last week.
-But I believe it is still worth to mention it even after &lt;a href="https://spring.io/blog/2022/10/20/spring-boot-3-0-0-rc1-available-now"&gt;Spring Boot 3.0.0-RC1 announcement&lt;/a&gt; since there is a number of notable changes and improvements.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;So, please, welcome Spring Integration &lt;code&gt;6.0&lt;/code&gt; first Release Candidate.
-It can be obtained from &lt;a href="https://repo.spring.io/milestone"&gt;Spring Milestone repository&lt;/a&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code data-lang="groovy"&gt;dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.integration:spring-integration-bom:6.0.0-RC1'
-    }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Here you can find important changes after the previously announced &lt;a href="https://spring.io/blog/2022/09/21/spring-integration-6-0-0-m5-and-5-5-15-available"&gt;Spring Integration &lt;code&gt;6.0.0-M5&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;spring-integration-amqp&lt;/code&gt; has added support for RabbitMQ Streams;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;spring-integration-sftp&lt;/code&gt; has been migrated from an old unsupported &lt;code&gt;jsch&lt;/code&gt; library to more modern Apache MINA;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;spring-integration-gemfire&lt;/code&gt; was removed according to dropped support for Apache Geode in Spring Data;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;spring-integration-scripting&lt;/code&gt; has added a GraalVM Polyglot support for JavaScript invocations;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Apache Groovy DSL for Spring Integration extension project has been migrated to the &lt;code&gt;spring-integration-groovy&lt;/code&gt; module code base;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Spring Integration for Apache Cassandra extension project has been migrated as a &lt;code&gt;spring-integration-cassandra&lt;/code&gt; module;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Kotlin Coroutines support has been added to the &lt;code&gt;@ServiceActivator&lt;/code&gt; POJO functions, also messaging gateway methods can now be as suspended functions;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The AOP &lt;code&gt;ChannelSecurityInterceptor&lt;/code&gt; in the &lt;code&gt;spring-integration-security&lt;/code&gt; module has been deprecated in favor of &lt;code&gt;AuthorizationChannelInterceptor&lt;/code&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Also, see a &lt;a href="https://github.com/spring-projects/spring-integration/wiki/Spring-Integration-5.x-to-6.0-Migration-Guide"&gt;Migration Guide&lt;/a&gt; for breaking changes in the framework and its modules.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;It would be great if you give it a chance and come back to us with reports, so it may make it into GA next month.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;See you in person this December at &lt;a href="https://springone.io/2022/sessions/whats-new-in-spring-integration-60"&gt;SpringOne&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Cheers,&amp;#160;&lt;br&gt;
-Artem&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-integration/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/issues"&gt;GitHub Issues&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-integration"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-integration"&gt;Chat&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>
