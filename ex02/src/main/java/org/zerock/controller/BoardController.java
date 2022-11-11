@@ -56,7 +56,7 @@ public class BoardController {
 		log.info("modify : " + board);
 		
 		if (service.modify(board)) {
-			rttr.addFlashAttribute("결과", "성공");
+			rttr.addFlashAttribute("result", "success");
 		}
 		
 		return "/redirect:/board/list";
@@ -67,7 +67,7 @@ public class BoardController {
 		log.info("remove..........................................."+bno);
 		
 		if (service.remove(bno)) {
-			rttr.addFlashAttribute("결과","성공");
+			rttr.addFlashAttribute("result", "success");
 		}
 		
 		return "redirect:/board/list";
