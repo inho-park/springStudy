@@ -69,7 +69,6 @@
                                 </a>  -->
                             </form>
                             <hr>
-                            
                         </div>
                     </div>
                 </div>

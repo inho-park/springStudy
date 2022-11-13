@@ -52,8 +52,7 @@
                                     </tfoot>
                                    
                                 </table>
-                                
-                                <!-- Modal add -->
+                                 <!-- Modal add -->
                                 <div class="modal-fade" id="myModal" tabindex="-1" role="dialog"
                                 aria-labelledby="myModalLabel" aria-hidden="true">
                                 <!-- aria = Accessible Rich Internet Applications -->
@@ -87,28 +86,28 @@
                                 	<!-- /.modal dialog -->
                                 </div>
                                 <!-- /.modal fade -->
-                            </div>
-                        </div>
-                    </div>
-
-<script type="text/javascript">
+ 	<script type="text/javascript">
 	$(document).ready(function() {
 		var result = '<c:out value="${result}"/>';
         
 		checkModal(result);
 
+		
         function checkModal(result) {
         	
-            if(result === " "){
+            if(result === ""){
                 return;
             }
 
             if(parseInt(result)>0){
                 $(".modal-body").html("게시글 "+parseInt(result)+"등록");
             }
-            $("#myModel").modal("show");
+            $("#myModal").modal('show');
         }
 	});
-</script>
+	</script>
+                            </div>
+                        </div>
+                    </div>
 
 <%@include file="../includes/footer.jsp" %>
