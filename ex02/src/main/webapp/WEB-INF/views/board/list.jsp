@@ -10,7 +10,18 @@
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
-
+					
+					
+					<!-- Redirect register -->
+					<div class="panel-heading">
+						Board List Page
+						<button id="regBtn" type="button" class="btn btn-xs pull-right">
+							Register New Board
+						</button>
+					</div>
+                   
+                   
+                   
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -53,7 +64,7 @@
                                    
                                 </table>
                                  <!-- Modal add -->
-                                <div class="modal-fade" id="myModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                                 aria-labelledby="myModalLabel" aria-hidden="true">
                                 <!-- aria = Accessible Rich Internet Applications -->
                                 	<div class="modal-dialog">
@@ -86,28 +97,34 @@
                                 	<!-- /.modal dialog -->
                                 </div>
                                 <!-- /.modal fade -->
- 	<script type="text/javascript">
-	$(document).ready(function() {
-		var result = '<c:out value="${result}"/>';
-        
-		checkModal(result);
-
-		
-        function checkModal(result) {
-        	
-            if(result === ""){
-                return;
-            }
-
-            if(parseInt(result)>0){
-                $(".modal-body").html("게시글 "+parseInt(result)+"등록");
-            }
-            $("#myModal").modal('show');
-        }
-	});
-	</script>
                             </div>
                         </div>
                     </div>
 
+	
 <%@include file="../includes/footer.jsp" %>
+	<!-- register 와 연동하기 위한 modal -->
+ 	<script type="text/javascript">
+	$(document).ready(function() {
+		var result = '<c:out value="${result}"/>';
+		
+        function checkModal(result) {
+        	
+            if(result ===''){
+                return;
+            }
+
+            if(parseInt(result)>0){
+                $(".modal-body").html("게시글 "+result+"등록");
+            }
+            $("#myModal").modal('show');
+        }
+
+        checkModal(result);
+		
+        
+        $("#regBtn").on("click",function() {
+        	self.location = "/board/register";
+        });
+	});
+	</script>

@@ -25,6 +25,7 @@ public class BoardController {
 	public void list(Model model) {
 		
 		log.info("list...........................................................");
+		
 		model.addAttribute("list",service.getList());
 	}
 	
@@ -34,14 +35,14 @@ public class BoardController {
 		log.info("register : "+board);
 		service.register(board);
 		rttr.addFlashAttribute("result",board.getBno());
+		log.info("bno : "+board.getBno());
 		
 		return "redirect:/board/list";
 	}
-	
 	// 연결을 위한 임시 매핑 주소
 	@GetMapping("/register")
 	public void register() {
-		
+		log.info("register GetMapping..............................................");
 	}
 	
 	@GetMapping("/get")
@@ -56,7 +57,7 @@ public class BoardController {
 		log.info("modify : " + board);
 		
 		if (service.modify(board)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("result", "modify");
 		}
 		
 		return "/redirect:/board/list";
@@ -67,7 +68,7 @@ public class BoardController {
 		log.info("remove..........................................."+bno);
 		
 		if (service.remove(bno)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("result", "remove");
 		}
 		
 		return "redirect:/board/list";
