@@ -43,7 +43,11 @@
                                     <c:forEach items="${list }" var="board">
                                     	<tr>
                                     		<td><c:out value="${board.bno }" /></td>
-                                    		<td><c:out value="${board.title }" /></td>
+                                    		<td>
+                                    			<a href='/board/get?bno=<c:out value="${board.bno }"/>'>
+                                    				<c:out value="${board.title }" />
+                                    			</a>
+                                    		</td>
                                     		<td><c:out value="${board.writer }" /></td>
                                     		<td><fmt:formatDate pattern="yyyy-MM-dd" 
                                     		 value="${board.regdate }"/></td>
@@ -103,11 +107,15 @@
 
 	
 <%@include file="../includes/footer.jsp" %>
+
 	<!-- register 와 연동하기 위한 modal -->
  	<script type="text/javascript">
+ 	// jQuery 추가
 	$(document).ready(function() {
 		var result = '<c:out value="${result}"/>';
 		
+        checkModal(result);
+        
         function checkModal(result) {
         	
             if(result ===''){
@@ -120,9 +128,8 @@
             $("#myModal").modal('show');
         }
 
-        checkModal(result);
 		
-        
+        // 도서 등록 페이지로 이동하는 버튼 기능 추가
         $("#regBtn").on("click",function() {
         	self.location = "/board/register";
         });
