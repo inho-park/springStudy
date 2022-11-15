@@ -57,8 +57,8 @@
                 					value='<c:out value="${board.writer }"/>' readonly="readonly">   
                 				</div>
                 				<button data-oper="modify" class="btn btn-default"
-                				onclick="location.href='/board/modify?bno=<c:out value=
-                				"${board.bno }"/>'">
+                				onclick="location.href='/board/modify?bno=<c:out value="${board.bno }"/>'"
+                				style="border: 1px solid #dddddd">
                 					Modify
                 				</button>
                 				<button data-oper="list" class="btn btn-info"

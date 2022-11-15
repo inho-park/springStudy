@@ -23,8 +23,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">도서 등록</h1>
                             </div>
-                            <form class="user" role="form" action="/board/modify" 
-                            method="post">
+                            <form class="user" role="form" action="/board/modify" method="post">
                                <div class="form-group">
 			                		<label>Bno</label>
 			                		<input class="form-control" name="bno" 
@@ -85,3 +84,30 @@
     
     
 <%@include file="../includes/footer.jsp" %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var formObj = $("form")
+		
+		$('button').on("click", function(e){
+			
+			// 기존 document 내에 있는 submit 을 막음
+			e.preventDefault()
+			
+			var operation = $(this).data("oper")
+			console.log("operation : "+operation)
+			
+			if(operation === 'remove'){
+				//remove
+				formObj.attr("action","/board/remove")
+			}
+			else if(operation ==='list'){
+				//move to list
+				self.location = "/board/list"
+				return				
+			}
+			formObj.submit()
+		})
+		
+	})
+</script>
