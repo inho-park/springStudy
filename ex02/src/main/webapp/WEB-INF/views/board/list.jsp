@@ -13,10 +13,12 @@
 					
 					
 					<!-- Redirect register -->
-					<div class="panel-heading">
+					<div class="panel-heading" style="position: relative; height: 40px">
 						Board List Page
-						<button id="regBtn" type="button" class="btn btn-xs pull-right">
-							Register New Board
+						<button id="regBtn" type="button" 
+						class="btn btn-primary" 
+						style="position: absolute; top:0; right:0; ">
+							Register New Book
 						</button>
 					</div>
                    

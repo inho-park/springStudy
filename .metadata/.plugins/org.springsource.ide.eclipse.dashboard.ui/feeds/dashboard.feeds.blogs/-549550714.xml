@@ -19,6 +19,7 @@
 &lt;p&gt;We&amp;rsquo;ve got a ton of cool stuff to get into this week, but let&amp;rsquo;s not bury the lede here: Spring Framework 6 comes out &lt;em&gt;tomorrow&lt;/em&gt;, Wednesday, the 16th of November, 2022! And you know where to go to get the bits: the Spring Initialzr, &lt;a href="https://start.spring.io"&gt;start.spring.io&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s dive into this week&amp;rsquo;s roundup!&lt;/p&gt;
 &lt;ul&gt;
+  &lt;li&gt;Did you see the new Reactor 2022.0.0 release? This release contains integration with Micrometer Tracing, context propagation, and plenty of other improvements. See &lt;a href="https://github.com/reactor/reactor/releases/tag/2022.0.0"&gt;this for more&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2022/11/10/spring-boot-3-0-0-rc2-available-now"&gt;Spring Boot 3.0.0-RC2 available now&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2022/11/08/spring-cloud-2021-0-5-codename-jubilee-has-been-released"&gt;Spring Cloud 2021.0.5 (codename Jubilee) Has Been Released&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2022/11/09/spring-framework-6-0-0-rc4-available-now"&gt;Spring Framework 6.0.0-RC4 available now&lt;/a&gt;&lt;/li&gt;

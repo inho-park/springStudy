@@ -12,5 +12,6 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Servers" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1665889466081_3" label="Window Working Set" name="Aggregate for window 1665889466081"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1668526651122_4" label="Window Working Set" name="Aggregate for window 1668526651122"/>
 <mruList name="server"/>
 </workingSetManager>
