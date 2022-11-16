@@ -65,10 +65,10 @@ public class BoardController {
 	
 	@PostMapping("/modify")
 	public String modify(BoardVO board, RedirectAttributes rttr) {
-		log.info("modify : " + board);
 		
+		log.info("modify : " + board);
 		if (service.modify(board)) {
-			rttr.addFlashAttribute("result", board.getBno());
+			rttr.addFlashAttribute("result", board);
 		}
 		
 		return "redirect:/board/list";

@@ -72,31 +72,31 @@ public class BoardControllerTests {
 //		log.info(resultPage);
 //	}
 	
-	@Test
-	public void testGet() throws Exception {
-		
-		log.info(mockMvc
-				.perform(MockMvcRequestBuilders.get("/board/get")
-				.param("bno", "2"))
-			.andReturn()
-			.getModelAndView()
-			.getModelMap());
-	}
-	
 //	@Test
-//	public void testModify() throws Exception {
-//		String resultPage = mockMvc
-//							.perform(MockMvcRequestBuilders.post("/board/modify")
-//							.param("bno", "1")
-//							.param("title", "수정된 테스트 새글 제목")
-//							.param("content", "수정된 테스트 새글 내용")
-//							.param("writer","수정된 새로운 작가래유"))
-//						.andReturn()
-//						.getModelAndView()
-//						.getViewName();
+//	public void testGet() throws Exception {
 //		
-//		log.info(resultPage);
+//		log.info(mockMvc
+//				.perform(MockMvcRequestBuilders.get("/board/get")
+//				.param("bno", "2"))
+//			.andReturn()
+//			.getModelAndView()
+//			.getModelMap());
 //	}
+	
+	@Test
+	public void testModify() throws Exception {
+		String resultPage = mockMvc
+							.perform(MockMvcRequestBuilders.post("/board/modify")
+							.param("bno", "84")
+							.param("title", "수정된 테스트 새글 제목 84")
+							.param("content", "수정된 테스트 새글 내용 84")
+							.param("writer","수정된 새로운 작가래유 84"))
+						.andReturn()
+						.getModelAndView()
+						.getViewName();
+		
+		log.info(resultPage);
+	}
 //	
 //	@Test
 //	public void testRemove() throws Exception {
