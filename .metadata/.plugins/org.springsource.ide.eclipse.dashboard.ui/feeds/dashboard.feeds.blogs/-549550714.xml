@@ -5,7 +5,21 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2022-11-15T08:00:00Z</updated>
+  <updated>2022-11-15T20:00:00Z</updated>
+  <entry>
+    <title>Spring Cloud Dataflow 2.10.0-RC2 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2022/11/15/spring-cloud-dataflow-2-10-0-rc2-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Chris Bono</name>
+    </author>
+    <id>tag:spring.io,2022-11-16:4995</id>
+    <updated>2022-11-15T20:00:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I¡¯m happy to announce that Spring Cloud Dataflow &lt;code&gt;2.10.0-RC2&lt;/code&gt; has been released and is now available from &lt;a href="https://repo.spring.io/milestone"&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release contains an update of the Spring Boot, Spring Framework, and Spring Cloud versions.&lt;br/&gt;See the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/releases/tag/v2.10.0-RC2"&gt;release notes&lt;/a&gt; for more information.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stay-in-touch-hellip" class="anchor" name="stay-in-touch-hellip"&gt;&lt;/a&gt;Stay in touch&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stackoverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - November 15th, 2022</title>
     <link rel="alternate" href="https://spring.io/blog/2022/11/15/this-week-in-spring-november-15th-2022" />
@@ -80,7 +94,7 @@
 	&amp;lt;version&amp;gt;4.0.0-SNAPSHOT&amp;lt;/version&amp;gt;&#xD;
 &amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#using-the-confluent-schema-registry-server-with-spring-cloud-stream-schema-registry-client" class="anchor" name="using-the-confluent-schema-registry-server-with-spring-cloud-stream-schema-registry-client"&gt;&lt;/a&gt;Using the Confluent Schema Registry Server with Spring Cloud Stream Schema Registry Client&lt;/h2&gt;
-&lt;p&gt;Confluent Schema Registry is a popular commercial solution for schema evolution for Kafka-based applications. Spring Cloud Stream AVRO message converters mentioned above can work with the Confluent Schema Registry. For this to work, the application needs to override the &lt;code&gt;SchemaReigsryClient&lt;/code&gt; bean and provide an implementation for &lt;code&gt;ConfluentScheamRegistryClient.&lt;/code&gt; &lt;/p&gt;&lt;h2&gt;&lt;a href="#resources" class="anchor" name="resources"&gt;&lt;/a&gt;Resources&lt;/h2&gt;
+&lt;p&gt;Confluent Schema Registry is a popular commercial solution for schema evolution for Kafka-based applications. Spring Cloud Stream AVRO message converters mentioned above can work with the Confluent Schema Registry. For this to work, the application needs to override the &lt;code&gt;SchemaRegistryClient&lt;/code&gt; bean and provide an implementation for &lt;code&gt;ConfluentSchemaRegistryClient.&lt;/code&gt; &lt;/p&gt;&lt;h2&gt;&lt;a href="#resources" class="anchor" name="resources"&gt;&lt;/a&gt;Resources&lt;/h2&gt;
 &lt;p&gt;We provide a set of sample applications demonstrating all the concepts described in this blog &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/tree/main/samples/spring-cloud-stream-schema-registry-integration"&gt;here&lt;/a&gt;. Please see the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/blob/main/samples/spring-cloud-stream-schema-registry-integration/README.adoc"&gt;README&lt;/a&gt; for more details. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.spring.io/spring-cloud-stream/docs/4.0.0-SNAPSHOT/reference/html/spring-cloud-stream-schema-registry.html#spring-cloud-stream-schema-registry-referenc"&gt;Here&lt;/a&gt; is the Schema Registry reference documentation.&lt;/p&gt;&lt;h2&gt;&lt;a href="#conclusion" class="anchor" name="conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Spring Cloud Stream &lt;code&gt;4.0.0&lt;/code&gt; brings back the Schema Registry components from previous versions of Spring Cloud Stream. This blog examined the motivations and overview of the re-introduced support. The support available in Spring Cloud Stream may only cover some of the schema evolution use cases. However, the provided schema registry components can support many schema evolution use cases that come under the purview of Spring Cloud Stream applications with a transport-neutral value add. &lt;/p&gt;
@@ -664,20 +678,6 @@ It is &lt;strong&gt;not recommended&lt;/strong&gt; to simply map authorities fro
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>CVE-2022-31692: Authorization rules can be bypassed via forward or include in Spring Security</title>
-    <link rel="alternate" href="https://spring.io/blog/2022/10/31/cve-2022-31692-authorization-rules-can-be-bypassed-via-forward-or-include-in-spring-security" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Marcus Hert Da Coregio</name>
-    </author>
-    <id>tag:spring.io,2022-10-27:4971</id>
-    <updated>2022-10-31T16:41:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Security 5.6.9 and 5.7.5 released on October 31st, 2022 included a fix for &lt;a href="https://tanzu.vmware.com/security/cve-2022-31692"&gt;CVE-2022-31692&lt;/a&gt; affecting the &lt;code&gt;AuthorizationFilter&lt;/code&gt;. Users are encouraged to update as soon as possible.&lt;/p&gt;
 &lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>

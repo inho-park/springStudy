@@ -91,7 +91,8 @@
                                 						Close
                                 					</button>
                                 					<button type="button"
-                                					class="btn btn-primary">
+                                					class="btn btn-primary"
+                                					data-dismiss="modal">
                                 						Save changes
                                 					</button>
                                 				</div>

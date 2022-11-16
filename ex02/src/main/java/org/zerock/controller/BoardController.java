@@ -68,10 +68,10 @@ public class BoardController {
 		log.info("modify : " + board);
 		
 		if (service.modify(board)) {
-			rttr.addFlashAttribute("result", "modify");
+			rttr.addFlashAttribute("result", board.getBno());
 		}
 		
-		return "/redirect:/board/list";
+		return "redirect:/board/list";
 	}
 	
 	

@@ -24,7 +24,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">도서 등록</h1>
                             </div>
                             <form class="user" role="form" action="/board/modify" method="post">
-                               <div class="form-group">
+                               	<div class="form-group">
 			                		<label>Bno</label>
 			                		<input class="form-control" name="bno" 
 			                		value="<c:out value='${board.bno }'/>" readonly="readonly">
@@ -38,8 +38,8 @@
 			                	
 			                	<div class="form-group">
 			                		<label>Text area</label>
-			                		<textarea rows="3" class="form-control" name="content">
-			                			<c:out value="${board.content }"/>
+			                		<textarea rows="3" class="form-control" 
+			                		name="content"><c:out value="${board.content }"/>
 			                		</textarea>
 			                	</div>
 			                	
@@ -95,7 +95,6 @@
 			e.preventDefault()
 			
 			var operation = $(this).data("oper")
-			console.log("operation : "+operation)
 			
 			if(operation === 'remove'){
 				//remove
@@ -104,7 +103,11 @@
 			else if(operation ==='list'){
 				//move to list
 				self.location = "/board/list"
-				return				
+				return
+			}
+			else {
+				$(this).unbind("click")
+				return
 			}
 			formObj.submit()
 		})
