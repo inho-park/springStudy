@@ -27,7 +27,7 @@
                                	<div class="form-group">
                                		<label>Bno</label>
                                		<input class="form-control" name='bno'
-                               		value='<c:out value="${board.bno }"/>' >
+                               		value='<c:out value="${board.bno }"/>' readonly="readonly">
                                	</div>
                                	<div class="form-group">
                                		<label>Title</label>
@@ -45,7 +45,7 @@
                                		<input class="form-control" name='writer'
                                		value='<c:out value="${board.writer }"/>' >
                                	</div>
-                               	
+                               	<!-- 난 진짜 이게 왜 안되는 건지 모르겠다...
                                	<div class="form-group">
                                		<label>RegDate</label>
                                		<input class="form-control" name='regdate'
@@ -58,7 +58,7 @@
                                		value='<fmt:formatDate pattern="yyyy/MM/dd" 
                                		value="${board.updateDate }" />' readonly="readonly">
                                	</div>
-                               	
+                               	 -->
                                	<button type="submit" data-oper='modify' 
                                	class="btn btn-primary">Modify
                                	</button>
@@ -97,8 +97,9 @@
 			}
 			else if(operation ==='list'){
 				//move to list
-				self.location = "/board/list"
-				return
+				//self.location = "/board/list"
+				formObj.attr("action","/board/list").attr("method","get")
+				formObj.empty()
 			}
 			formObj.submit()
 			
