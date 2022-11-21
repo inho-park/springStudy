@@ -1,9 +1,9 @@
--- oracle Àç±Íº¹»ç ¸í·É¹®
+-- oracle ì¬ê·€ë³µì‚¬ ëª…ë ¹ë¬¸
     insert into tbl_board (bno,title,content,writer) 
     (select SEQ_BOARD.nextval, title, content, writer from tbl_board);
 
 
--- bno ¸¦ ÀÌ¿ëÇÏ¿© Á¤·Ä -> Á¤·Ä ¾Ë°í¸®Áò »ç¿ë
+-- bno ë¥¼ ì´ìš©í•˜ì—¬ ì •ë ¬ -> ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ ì‚¬ìš©
     select * from tbl_board order by bno+1 DESC;
     select * from tbl_board order by bno DESC;
 
@@ -12,25 +12,50 @@
     select * from tbl_board where bno > 0;
 
 
--- /*+ */ ¸¦ »ç¿ëÇØ hint ¸¦ »ç¿ëÇØ¼­ »ç¿ëÀÚÀÇ ÀÇµµ´ë·Î µÇ°Ô ÇÏ´Â ¹æ¹ı
+-- /*+ */ ë¥¼ ì‚¬ìš©í•´ hint ë¥¼ ì‚¬ìš©í•´ì„œ ì‚¬ìš©ìì˜ ì˜ë„ëŒ€ë¡œ ë˜ê²Œ í•˜ëŠ” ë°©ë²•
 -- SELECT
 -- /*+ Hint name (param ...) */ 
 -- column name, ...
 -- FROM
 -- table name
 -- ...
--- ÀåÁ¡Àº ¿À·ù°¡ ³ªµµ ¿ø·¡ ¸í·É¹®¿¡ ¿µÇâÀ» ÁÖÁö ¾ÊÀ½
--- ¾Æ·¡ÀÇ µÎ ¸í·ÉÀº °°Àº °á°ú¸¦ »ı¼ºÇÏÁö¸¸ 2¹øÂ°´Â ¾Æ¹« Á¶°ÇÀÌ ¾øÀ½
+-- ì¥ì ì€ ì˜¤ë¥˜ê°€ ë‚˜ë„ ì›ë˜ ëª…ë ¹ë¬¸ì— ì˜í–¥ì„ ì£¼ì§€ ì•ŠìŒ
+-- ì•„ë˜ì˜ ë‘ ëª…ë ¹ì€ ê°™ì€ ê²°ê³¼ë¥¼ ìƒì„±í•˜ì§€ë§Œ 2ë²ˆì§¸ëŠ” ì•„ë¬´ ì¡°ê±´ì´ ì—†ìŒ
     select * from tbl_board order by bno DESC;
     select /*+INDEX_DESC (tbl_board pk_board) */ * from tbl_board;
     
 
--- FULL ÈùÆ®
--- ´Ü¼øÈ÷ table À» order by ¿¡ ¸ÂÃç full scan ÇÔ
+-- FULL íŒíŠ¸
+-- ë‹¨ìˆœíˆ table ì„ order by ì— ë§ì¶° full scan í•¨
     select /*+ FULL(tbl_board) */ * from tbl_board order by bno desc;
     
 
--- INDEX_ASC , INDEX_DESC ÈùÆ®
--- ¸ñ·Ï ÆäÀÌÁö¿¡¼­ °¡Àå ¸¹ÀÌ »ç¿ëµÇ´Â ÈùÆ®
+-- INDEX_ASC , INDEX_DESC íŒíŠ¸
+-- ëª©ë¡ í˜ì´ì§€ì—ì„œ ê°€ì¥ ë§ì´ ì‚¬ìš©ë˜ëŠ” íŒíŠ¸
     select /*+INDEX_ASC (tbl_board pk_board) */ * from tbl_board;
 
+
+-- ROWNUM ì ìš©
+-- rownum ì€ table ë‚´ì— ì¡´ì¬í•˜ì§€ ì•Šê³  ê°€ì ¸ì˜¨ ë°ì´í„°ë¥¼ ì´ìš©í•´ì„œ ë²ˆí˜¸ë¥¼ ë§¤ê¹€
+    select rownum rn, bno, title from tbl_board;
+    
+    select /*+ FULL(tbl_board)*/ rownum rn, bno, title from tbl_board order by bno;
+    
+    select /*+ INDEX_ASC(tbl_board pk_board)*/ rownum rn, bno, title, content from tbl_board;
+    select /*+ INDEX_DESC(tbl_board pk_board)*/ rownum rn, bno, title, content from tbl_board;
+    
+
+-- ROWNUM ìœ¼ë¡œ where êµ¬ë¬¸ì„ ì´ìš©í•˜ì—¬ í˜ì´ì§•í•˜ê¸°
+    select /*+ INDEX_DESC(tbl_board pk_board)*/rownum rn, bno, title from tbl_board where rownum<=10;
+    
+    -- ì˜ˆì™¸) ì•„ë¬´ ê²°ê³¼ ë‚˜ì˜¤ì§€ ì•ŠìŒ ( rownum ì„ where êµ¬ë¬¸ì— ë„£ì„ ë•ŒëŠ” ë°˜ë“œì‹œ 1 ì´ í¬í•¨ë˜ë„ë¡ í•´ì•¼í•¨ )
+    -- ì˜ëª»ëœ ì˜ˆì‹œ )
+    select /*+ INDEX_DESC(tbl_board pk_board)*/rownum rn, bno, title from tbl_board where rownum>10 and rownum<=20;
+    -- ì¦‰ ì‚¬ìš©í•˜ë ¤ë©´ In-line View ì²˜ë¦¬ë¥¼ í•˜ì—¬ 2 í˜ì´ì§€ ( 11 ~ 20 ) ê¹Œì§€ì˜ ë°ì´í„° ì²˜ë¦¬
+    select bno, title, content
+    from (
+        select /*+INDEX_DESC(tbl_board, pk_board) */rownum rn, bno, title, content
+        from tbl_board
+        where rownum<=20
+    )
+    where rn > 10;
