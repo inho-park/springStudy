@@ -33,9 +33,16 @@ public class BoardController {
 //	}
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
+		
 		log.info("list : "+cri);
 		model.addAttribute("list",service.getList(cri));
-		model.addAttribute("pageMaker",new PageDTO(cri, 200));
+//		model.addAttribute("pageMaker",new PageDTO(cri, 123));
+		
+		int total = service.getTotal(cri);
+		
+		log.info("total : "+total);
+		
+		model.addAttribute("pageMaker",new PageDTO(cri, total));
 	}
 	
 	
@@ -60,8 +67,8 @@ public class BoardController {
 	
 	
 	
-										// ModelAttribute 는 Model 에 데이터를 지정한 이름을 담음
-	@GetMapping({"/get","/modify"})		// model, attribute 클래스 다 해당가능한듯함
+										// ModelAttribute(이름) 클래스 객체 => Mapping 되면서 날라온
+	@GetMapping({"/get","/modify"})		// 데이터들을 자동으로 객체에 담아 이름으로 Model 에 담김
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, 
 			Model model) {
 		
@@ -106,4 +113,6 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
+	
 }

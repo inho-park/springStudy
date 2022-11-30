@@ -40,6 +40,9 @@
 			where bno = #{bno}
 		</update>
 		
+		<select id="getTotalCount" resultType="int">
+			select count(*) from tbl_board where bno > 0
+		</select>
 		
 		<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
 			<![CDATA[
@@ -51,10 +54,30 @@
 					from
 						tbl_board
 					where
-						rownum <= #{pageNum} * #{amount}
+						
+			]]>
+			<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+				<foreach collection="typeArr" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 'T'.toString()">
+								title like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'C'.toString()">
+								content like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'W'.toString()">
+								writer like '%'||#{keyword}||'%'
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+			<![CDATA[
+				rownum <= #{pageNum} * #{amount}
 				)
 				where 
 					rn > (#{pageNum} - 1) * #{amount}
-			]]>
+			]]
 		</select>
 	</mapper>

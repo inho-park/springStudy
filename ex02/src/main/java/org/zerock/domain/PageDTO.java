@@ -6,7 +6,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PageDTO {
-	
 	private int startPage;
 	private int endPage;
 	private boolean prev, next;
@@ -24,7 +23,7 @@ public class PageDTO {
 		
 		int realEnd = (int) (Math.ceil((total * 1.0) / cri.getAmount()));
 		
-		//
+		// 
 		if (realEnd < this.endPage) {
 			this.endPage = realEnd;
 		}
