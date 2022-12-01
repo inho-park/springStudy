@@ -79,10 +79,15 @@ public class BoardMapperTests {
 	@Test
 	public void testPaging() {
 		Criteria cri = new Criteria();
-		cri.setPageNum(3);
-		cri.setAmount(10);
+//		cri.setPageNum(3);
+//		cri.setAmount(10);
+		cri.setKeyword("새로");
+		cri.setType("CTW");
+		
 		List<BoardVO> list = mapper.getListWithPaging(cri);
 		
 		list.forEach(board -> log.info(board));
 	}
+	
+	
 }
