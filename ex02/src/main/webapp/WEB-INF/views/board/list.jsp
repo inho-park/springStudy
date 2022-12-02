@@ -59,25 +59,55 @@
                                     </c:forEach>
                                 </table>
                                 
+                                <div class="col-lg-12">
+                                	<form action="/board/list" method="get" id="searchForm">
+                                		<select name="type" id="option">
+                                			<option value=""
+                                			<c:out value="${pageMaker.cri.type eq null?'selected':'' }"/>>--
+                                			<option value="T"
+                                			<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목
+                                			<option value="C"
+                                			<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용
+                                			<option value="W"
+                                			<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자
+                                			<option value="TC"
+                                			<c:out value="${pageMaker.cri.type eq 'TC'?'selected':'' }"/>>제목 or 내용
+                                			<option value="TW"
+                                			<c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/>>제목 or 작성자
+                                			<option value="TCW"
+                                			<c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/>>제목 or 내용 or 작성자
+                                		</select>
+                                		<input type="text" name="keyword" id="keyword" 
+                                		value=<c:out value="${pageMaker.cri.keyword }"/>>
+                                		<input type="hidden" name="pageNum" 
+                                		value=<c:out value="${pageMaker.cri.pageNum }"/>>
+                                		<input type="hidden" name="amount" 
+                                		value=<c:out value="${pageMaker.cri.amount }"/>>
+                                		<button class="btn btn-primary">Search</button>
+                                	</form>
+                                </div>
+                                
                                 <!-- 없는 거라 포기 -->
-                                <div class="pull-right">
+                                <div class="col-md-7" style="margin-top : 20px;">
                                 	<ul class="pagination">
                                 		<c:if test="${pageMaker.prev}">
-                                			<li class="paginate_button previous">
-                                				<a href="${pageMaker.startPage-1 }">Previous</a>
+                                			<li class="paginate_button page-item previous disabled" id="dataTable_previous">
+                                				<a href="${pageMaker.startPage-1 }" 
+                                				class="btn btn-primary">
+                                				Previous</a>
                                 			</li>
                                 		</c:if>
                                 		
                                 		<c:forEach var="num" begin="${pageMaker.startPage }"
                                 		 end="${pageMaker.endPage }">
-                                		 	<li class="paginate_button ${pageMaker.cri.pageNum == num?"active":"" }">
-                                		 		<a href="${num }">${num }</a>
+                                		 	<li class='paginate_button page-item ${pageMaker.cri.pageNum == num?"active":"" }'>
+                                		 		<a href="${num }" class="btn">${num }</a>
                                 		 	</li>
                                 		 </c:forEach>
                                 		 
                                 		 <c:if test="${pageMaker.next }">
-                                		 	<li class="paginate_button next">
-                                		 		<a href="${pageMaker.endPage + 1 }">Next</a>
+                                		 	<li class="paginate_button page-item next disabled" id="dataTable_next">
+                                		 		<a href="${pageMaker.endPage + 1 }" class="btn btn-primary">Next</a>
                                 		 	</li>
                                 		 </c:if>
                                 	</ul>
@@ -125,6 +155,8 @@
 	<form id="actionForm" action="/board/list" method="get">
 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+		<input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type }"/>'>
+		<input type="hidden" name="keyword" value='<c:out value="${pageMaker.cri.keyword }"/>'>
 	</form>
 	
 <%@include file="../includes/footer.jsp" %>
@@ -175,6 +207,28 @@
         	actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr("href")+"'>")
         	actionForm.attr("action","/board/get")
         	actionForm.submit()
+        })
+        
+        
+        // 검색할 때 1 페이지로 이동 및 검색종류 설정 및 키워드 입력이 없을 시 alert 실행 후 false 리턴
+        var searchForm = $("#searchForm");
+        $("#searchForm button").on("click", function(e){
+        	// 검색옵션을 선택하지 않을 시
+        	if (!searchForm.find("option:selected").val()){
+        		alert("검색 종류를 선택하세요");
+        		$("#option").focus();
+        		return false;
+        	}
+        	if (!searchForm.find("input[name='keyword']").val()){
+        		alert("키워드를 입력하세요");
+        		$("#keyword").focus();
+        		return false;
+        	}
+        	
+        	searchForm.find("input[name='pageNum']").val("1");
+        	e.preventDefault();
+        	
+        	searchForm.submit();
         })
 	});
 	</script>
