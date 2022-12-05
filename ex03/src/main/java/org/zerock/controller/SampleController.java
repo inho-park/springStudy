@@ -11,9 +11,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.SampleVO;
+import org.zerock.domain.Ticket;
 
 import lombok.extern.log4j.Log4j;
 
@@ -112,5 +115,17 @@ public class SampleController {
 		String[] str = new String[] { "Category : " + cat, "productID : " + pid };
 		log.info("getPath : "+str);
 		return str;
+	}
+	
+	
+	
+	// @RequestBody 는 전달된 요청의 내용을 이용해서 해당 파라미터의 타입으로 변환을 요구
+	@PostMapping("/ticket")
+	// 즉 아래의 @RequestBody 어노테이션은 요청 바디에 있는 내용을 parameter(Ticket) 형태로 변환을 요구함
+	public Ticket convert(@RequestBody Ticket ticket) {
+		
+		log.info("convert....................ticket : "+ticket);
+		
+		return ticket;
 	}
 }
