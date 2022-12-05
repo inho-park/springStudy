@@ -81,20 +81,15 @@ public class BoardController {
 	
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr,
-			@ModelAttribute("cri") Criteria cri) {
+	public String modify(BoardVO board, RedirectAttributes rttr, Criteria cri) {
 		
 		log.info("modify : " + board);
+		
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "modify");
 		}
 		
-		rttr.addAttribute("pageNum",cri.getPageNum());
-		rttr.addAttribute("amount",cri.getAmount());
-		rttr.addAttribute("type",cri.getType());
-		rttr.addAttribute("keyword",cri.getKeyword());
-		
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 	}
 	
 	
