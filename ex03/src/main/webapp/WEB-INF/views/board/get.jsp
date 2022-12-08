@@ -89,22 +89,48 @@
 
 <%@include file="../includes/footer.jsp" %>
 
+<script type="text/javascript" src="/resources/js/reply.js"></script>
+
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
+	
+	console.log("====================================");
+	console.log("JS TEST");
+	
+	var bnoValue = '<c:out value="${board.bno}"/>';
+	
+	// for replyService add test
+	replyService.add(
+		{
+			reply : "JS Test",
+			replyer : "tester",
+			bno : bnoValue
+		},
+		// result(reply.js 에서 넘어온) 를 alert 로 띄우기
+		function(result) {
+			alert("RESULT : " + result);
+		}
+	);
+
+});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {		
 		
-		var operForm = $("#operForm")
+		var operForm = $("#operForm");
 		
 		$("button[data-oper='modify']").click(function(e){
 			
-			operForm.attr("action","/board/modify").submit()
+			operForm.attr("action","/board/modify").submit();
 			
-		})
+		});
 		
 		$("button[data-oper='list']").click(function(e){
 			
-			operForm.find("#bno").remove()
-			operForm.attr("action","/board/list")
-			operForm.submit()
-		})
-	})
+			operForm.find("#bno").remove();
+			operForm.attr("action","/board/list");
+			operForm.submit();
+		});
+	});
 </script>
