@@ -61,7 +61,8 @@
                                 
                                 <div class="col-lg-12">
                                 	<form action="/board/list" method="get" id="searchForm">
-                                		<select name="type" id="option">
+                                		<select name="type" id="option" style="width: 150px;"
+                                		class="custom-select custom-select-sm form-control form-control-sm">
                                 			<option value=""
                                 			<c:out value="${pageMaker.cri.type eq null?'selected':'' }"/>>--
                                 			<option value="T"

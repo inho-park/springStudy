@@ -83,16 +83,81 @@
                 </div>
                 <!-- /.row -->
                 
-                
+                <!-- 댓글 작성용 판넬 만들기 -->
+                <div class="row" style="margin-top: 30px">
+                	<div class="col-lg-12">
+                		<!-- /.panel -->
+                		<div class="panel panel-default">
+                			<div class="panel-heading">
+                				<i class="fa fa-comments fa-fw"></i> Reply
+                			</div>
+                			
+                			<!-- /.panel-heading -->
+                			<div class="panel-body">
+                				<ul class="chat">
+                					<!-- start reply -->
+                					<li class="left clearfix" data-rno = '12' >
+                					<div>
+	                					<div class="header">
+	                						<strong class="primary-font">
+	                							user00
+	                						</strong>
+	                						<small class="pull-right text-muted">
+	                							2022-12-09
+	                						</small>
+	                					</div>
+	                					<p>Good 잡</p>
+                					</div>
+                				</ul>
+                			</div>
+                		</div>
+                	</div>
+                </div>
                 
     </div>
 
 <%@include file="../includes/footer.jsp" %>
 
+<!-- reply ajax -->
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
+	$(document).ready(function() {
+		var bnoValue = '<c:out value="${board.bno}"/>';
+		var replyUL = $(".chat");
+		
+		showList(1);
+		
+		function showList(page) {
+			
+			replyService.getList({bno : bnoValue, page : page||1 }, function(list){
+				
+				var str = "";
+				
+				if (list == null || list.length == 0) {
+					replyUL.html("");
+					return;
+				}
+				
+				for (var i = 0, len = list.length || 0; i < len; i++) {
+					str += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
+					str += "  <div>";
+					str += "	<div class='header'>";
+					str += "	  <strong class='primary-font'>" + list[i].replyer + "</strong>";
+					str += "	  <small class='pull-right text-muted'>" + list[i].replyDate + "</small>"
+					str += "	</div>"	
+					str += "  <p>" + list[i].reply + "</p></div></li>";
+				}
+				
+				replyUL.html(str);
+			
+			}); //end function
+		} //end showList
+	});
+</script>
+
+<!-- json 에 정보 더 담기 -->
+<script type="text/javascript">
 	
 	console.log("====================================");
 	console.log("JS TEST");
@@ -112,18 +177,10 @@ $(document).ready(function() {
 		}
 	);
 
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
 	
-	console.log("====================================");
-	console.log("JS TEST");
 	
-	var bnoValue = '<c:out value="${board.bno}"/>';
 	
-	// for replyService add test
+// for replyService get list of reply
 	replyService.getList({bno:bnoValue, page:1}, function(list){
 		
 		for (var i = 0, len = list.length || 0; i < len; i++){
@@ -131,8 +188,43 @@ $(document).ready(function() {
 		}
 	})
 
-});
+	
+	
+	
+// rno 에 해당하는 댓글 삭제하기
+	replyService.remove(44, function(result) {
+		
+		console.log(result);
+		
+		if(result === "success"){
+			alert("REMOVED");
+		}
+	},function(error) {
+		alert("ERROR...");
+		
+	}); 
+		
+		
+		
+
+// RequestBody로 JSON을 ReplyVO로 변환하여 rno 를 가져와 update 하는 구조
+	replyService.update({
+		rno : 22,
+		bno : bnoValue,
+		reply : "Modified Reply..."
+	}, function(result) {
+		alert("MODIFIED");
+	});
+	
+	
+	
+	
+// 특정 번호의 댓글 조회를 위한 get 방식 추가
+	replyService.get(10, function(data){
+		console.log(data);
+	});
 </script>
+
 
 <script type="text/javascript">
 	$(document).ready(function() {		
