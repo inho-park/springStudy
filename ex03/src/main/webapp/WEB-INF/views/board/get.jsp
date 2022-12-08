@@ -144,7 +144,8 @@
 					str += "  <div>";
 					str += "	<div class='header'>";
 					str += "	  <strong class='primary-font'>" + list[i].replyer + "</strong>";
-					str += "	  <small class='pull-right text-muted'>" + list[i].replyDate + "</small>"
+					str += "	  <small class='pull-right text-muted'>" + 
+							replyService.displayTime(list[i].replyDate) + "</small>"
 					str += "	</div>"	
 					str += "  <p>" + list[i].reply + "</p></div></li>";
 				}
@@ -156,10 +157,10 @@
 	});
 </script>
 
-<!-- json 에 정보 더 담기 -->
+<!-- 테스트용 자바스크립트 -->
 <script type="text/javascript">
 	
-	console.log("====================================");
+/* 	console.log("====================================");
 	console.log("JS TEST");
 	
 	var bnoValue = '<c:out value="${board.bno}"/>';
@@ -222,7 +223,7 @@
 // 특정 번호의 댓글 조회를 위한 get 방식 추가
 	replyService.get(10, function(data){
 		console.log(data);
-	});
+	}); */
 </script>
 
 
