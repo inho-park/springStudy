@@ -207,7 +207,7 @@
 				
 				replyUL.html(str);
 			
-			}); //end function
+			});
 		} //end showList
 		
 		var modal = $(".modal");
@@ -223,30 +223,33 @@
 			
 			modal.find("input").val("");
 			modalInputReplyDate.closest("div").hide();
-			modal.find("button[id !='modalCloseBtn']").hide();
+			modal.find("button[id!='modalCloseBtn']").hide();
 			
 			modalRegisterBtn.show();
 			
 			$(".modal").modal("show");
 			
 		});
-	});
-	
-	modalRegisterBtn.on("click", function(e){
 		
-		var reply = {
-				reply: modalInputReply.val(),
-				replyer: modalInputReplyer.val(),
-				bno: bnoValue
-		};
-		replyService.add(reply, function(result){
+		modalRegisterBtn.on("click", function(e){
 			
-			alert(result);
+			var reply = {
+					reply: modalInputReply.val(),
+					replyer: modalInputReplyer.val(),
+					bno: bnoValue
+			};
+			replyService.add(reply, function(result){
+				
+				alert(result);
+				
+				modal.find("input").val("");
+				modal.modal("hide");
+			});
 			
-			modal.find("input").val("");
-			modal.modal("hide");
+			showList(1);
 		});
 	});
+	
 </script>
 
 <!-- 테스트용 자바스크립트 -->
