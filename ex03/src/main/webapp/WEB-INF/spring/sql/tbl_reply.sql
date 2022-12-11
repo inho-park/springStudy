@@ -1,4 +1,6 @@
--- tbl_reply ´ñ±Û ±¸ÇöÀ» À§ÇÑ db ±¸Çö
+-- tbl_reply DDL
+
+-- tbl_reply table ìƒì„±
 create table tbl_reply (
     rno number(10,0),
     bno number(10,0) not null,
@@ -8,12 +10,12 @@ create table tbl_reply (
     updateDate date default sysdate
 );
 
--- ½ÃÄö½º »ı¼º
+-- rno ë¥¼ ìœ„í•œ ì‹œí€€ìŠ¤ ì¶”ê°€
 create sequence seq_reply;
 
--- º°µµÀÇ PK¸¦ rno·Î ÁöÁ¤
+-- rno ë¥¼ ê¸°ë³¸ í‚¤ë¡œ ì§€ì •
 alter table tbl_reply add constraint pk_reply primary key (rno);
 
--- FK (fk_reply_board) ·Î bno °¡ tbl_board (bno) ¸¦ ÂüÁ¶ÇÏ´Â ¿Ü·¡Å°¶ó´Â °ÍÀ» ¸í½Ã
+-- FK (fk_reply_board) : bno ë¥¼ tbl_board (bno) ë¥¼ ì°¸ì¡°í•˜ëŠ” ì™¸ë˜í‚¤ë¡œ ì§€ì •
 alter table tbl_reply add constraint fk_reply_board
 foreign key (bno) references tbl_board (bno);

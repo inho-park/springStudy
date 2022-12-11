@@ -219,11 +219,12 @@
 		var modalRemoveBtn = $("#modalRemoveBtn");
 		var modalRegisterBtn = $("#modalRegisterBtn");
 		
+		// 날짜 숨기기 및 닫기 버튼 숨기기 => 댓글 작성할 때 사용
 		$("#addReplyBtn").on("click", function(e) {
 			
 			modal.find("input").val("");
-			modalInputReplyDate.closest("div").hide();
-			modal.find("button[id!='modalCloseBtn']").hide();
+			modalInputReplyDate.closest("div").hide(); // div 채로 숨김
+			modal.find("button[id!='modalCloseBtn']").hide(); // 
 			
 			modalRegisterBtn.show();
 			
@@ -231,6 +232,34 @@
 			
 		});
 		
+		// 댓글을 클릭할 때 활성화 => 댓글 수정 및 삭제 기능에 사용
+		$(".chat").on("click", "li", function(e){
+			
+			var rno = $(this).data("rno");
+			console.log(rno);
+			
+			replyService.get(rno, function(reply){
+				// 댓글을 수정 및 삭제하기 위해서는 어차피 해당 댓글을 조회해야함 => modal 에 가져오는 기능을 추가
+				modalInputReply.val(reply.reply);
+				modalInputReplyer.val(reply.replyer);
+				modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
+					.attr("readonly","readonly");
+				modal.data("rno",reply.rno);
+				
+				modal.find("button[id != 'modalCloseBtn']").hide();
+				modalModBtn.show();
+				modalRemoveBtn.show();
+				
+				$(".modal").modal("show");
+			});
+			
+		});
+		
+		
+		
+		// 댓글 CUD 기능을 하나의 Modal 을 가지고 modal 요소들을 숨기고 보여주는 방식으로 사용
+		
+		// 댓글 추가 기능
 		modalRegisterBtn.on("click", function(e){
 			
 			var reply = {
@@ -244,10 +273,42 @@
 				
 				modal.find("input").val("");
 				modal.modal("hide");
+
+				showList(1);
 			});
 			
-			showList(1);
 		});
+		
+		// 댓글 수정 기능
+		modalModBtn.on("click",function(e) {
+			
+			// data-rno 속성 사용
+			var reply = {rno : modal.data("rno"),
+						reply : modalInputReply.val()};
+			
+			
+			replyService.update(reply, function(result){
+				
+				alert(result);
+				modal.modal("hide");
+				showList(1);
+			})
+		});
+		
+		// 댓글 삭제 기능
+		modalRemoveBtn.on("click", function(e){
+			
+			// data-rno 속성 사용
+			var rno = modal.data("rno");
+			
+			replyService.remove(rno, function(result){
+				
+				alert(result);
+				modal.modal("hide");
+				showList(1);
+			});
+		});
+		
 	});
 	
 </script>
