@@ -190,7 +190,8 @@
 			
 			console.log("show List : " + page);
 			
-			replyService.getList({bno : bnoValue, page : page||1 }, function(replyCnt,list){
+			replyService.getList({bno : bnoValue, page : page||1 }, 
+					function(replyCnt,list){
 				
 				console.log("replyCnt : " + replyCnt);
 				console.log("list : " + list);
@@ -275,6 +276,7 @@
 		
 		
 		
+		
 //=========================================================================================		
 		// 댓글 CUD 기능을 하나의 Modal 을 가지고 modal 요소들을 숨기고 보여주는 방식으로 사용
 		
@@ -335,6 +337,8 @@
 		
 		
 //=========================================================================================
+		
+	// 댓글 페이지번호처리 로직
 		var pageNum = 1;
 		var replyPageFooter = $(".panel-footer");
 		
@@ -355,6 +359,7 @@
 			}
 			
 			var str = "<ul class='pagination'>";
+			
 			if (prev) {
 				str+= "<li class='page-item " + active + " '><a class='page-link' href='"
 				+ (startNum - 1) + "'>Previous</a></li>";
@@ -364,8 +369,8 @@
 				
 				var active = pageNum == i? "active":"";
 				
-				str += "<li class='page-item'><a class='page-link' href='"
-				+ i + "'>Previous</a></li>";
+				str += "<li class='page-item " + active + "'><a class='page-link' href='"
+				+ i + "'>" + i + "</a></li>";
 			}
 			
 			if (next) {
