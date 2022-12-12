@@ -24,7 +24,6 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class ReplyMapperTests {
-	private Long[] bnoArr = { 1179784l,1179783l,1179782l,1179781l,1179761l };
 	
 	@Setter(onMethod_ = @Autowired)
 	private ReplyMapper mapper;
@@ -37,70 +36,70 @@ public class ReplyMapperTests {
 
 	
 	
-	// insert Test
-	@Test
-	public void testCreate() {
-		
-		IntStream.rangeClosed(1, 10).forEach(i -> {
-			
-			ReplyVO vo = new ReplyVO();
-			
-			// 게시물의 번호
-			vo.setBno(bnoArr[(i-1) % 5]);
-			vo.setReply("댓글 테스트 " + i);
-			vo.setReplyer("replyer" + i);
-			
-			mapper.insert(vo);
-		});
-	}
-	
-	
-	
-	// select Test
-	@Test
-	public void testRead() {
-		
-		Long targetRno = 15L;
-		
-		ReplyVO vo = mapper.read(targetRno);
-		
-		log.info(vo);
-	}
-	
-	
-	
-	// delete Test
-	@Test
-	public void testDelete() {
-		
-		Long targetRno = 10L;
-		
-		mapper.delete(targetRno);
-	}
-	
-	
-	
-	// update Test
-	@Test
-	public void testUpdate() {
-		
-		Long targetRno = 11l;
-		
-		ReplyVO vo = mapper.read(targetRno);
-		
-		vo.setReply("Update Reply");
-		
-		log.info("Update Count : "+mapper.update(vo));
-	}
+//	// insert Test
+//	@Test
+//	public void testCreate() {
+//		
+//		IntStream.rangeClosed(1, 10).forEach(i -> {
+//			
+//			ReplyVO vo = new ReplyVO();
+//			
+//			// 게시물의 번호
+//			vo.setBno(bnoArr[(i-1) % 5]);
+//			vo.setReply("댓글 테스트 " + i);
+//			vo.setReplyer("replyer" + i);
+//			
+//			mapper.insert(vo);
+//		});
+//	}
+//	
+//	
+//	
+//	// select Test
+//	@Test
+//	public void testRead() {
+//		
+//		Long targetRno = 15L;
+//		
+//		ReplyVO vo = mapper.read(targetRno);
+//		
+//		log.info(vo);
+//	}
+//	
+//	
+//	
+//	// delete Test
+//	@Test
+//	public void testDelete() {
+//		
+//		Long targetRno = 10L;
+//		
+//		mapper.delete(targetRno);
+//	}
+//	
+//	
+//	
+//	// update Test
+//	@Test
+//	public void testUpdate() {
+//		
+//		Long targetRno = 11l;
+//		
+//		ReplyVO vo = mapper.read(targetRno);
+//		
+//		vo.setReply("Update Reply");
+//		
+//		log.info("Update Count : "+mapper.update(vo));
+//	}
 	
 	
 	
 	// getListWithPaging Test
 	@Test
 	public void testList() {
-		Criteria cri = new Criteria();
+		Criteria cri = new Criteria(2,10);
 		
-		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 1179784L);
 		
 		replies.forEach(reply -> log.info(reply));
 	}

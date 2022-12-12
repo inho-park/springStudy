@@ -109,9 +109,12 @@
 	                							2022-12-09
 	                						</small>
 	                					</div>
-	                					<p>Good 잡</p>
+	                					<p>뭔가 문제가 있다..</p>
                 					</div>
                 				</ul>
+                			</div>
+                			<div class="panel-footer">
+                			
                 			</div>
                 		</div>
                 	</div>
@@ -182,9 +185,21 @@
 		
 		showList(1);
 		
+		// 댓글을 보여주는 함수 displayTime 을 이용해 replyDate 수정
 		function showList(page) {
 			
-			replyService.getList({bno : bnoValue, page : page||1 }, function(list){
+			console.log("show List : " + page);
+			
+			replyService.getList({bno : bnoValue, page : page||1 }, function(replyCnt,list){
+				
+				console.log("replyCnt : " + replyCnt);
+				console.log("list : " + list);
+				
+				if(page == -1){
+					pageNum = Math.ceil(replyCnt/10.0);
+					showList(pageNum);
+					return;
+				}
 				
 				var str = "";
 				
@@ -209,7 +224,10 @@
 			
 			});
 		} //end showList
+
 		
+		
+//=========================================================================================
 		var modal = $(".modal");
 		var modalInputReply = modal.find("input[name='reply']");
 		var modalInputReplyer = modal.find("input[name='replyer']");
@@ -257,6 +275,7 @@
 		
 		
 		
+//=========================================================================================		
 		// 댓글 CUD 기능을 하나의 Modal 을 가지고 modal 요소들을 숨기고 보여주는 방식으로 사용
 		
 		// 댓글 추가 기능
@@ -274,7 +293,9 @@
 				modal.find("input").val("");
 				modal.modal("hide");
 
-				showList(1);
+				// showList(1);
+				// page 번호가 -1 로 전달되면 마지막 페이지를 찾아서 다시 호출
+				showList(-1);
 			});
 			
 		});
@@ -309,6 +330,55 @@
 			});
 		});
 		
+		
+		
+		
+		
+//=========================================================================================
+		var pageNum = 1;
+		var replyPageFooter = $(".panel-footer");
+		
+		function showReplyPage(replyCnt) {
+			
+			var endNum = Math.ceil(pageNum / 10.0) * 10;
+			var startNum = endNum - 9;
+			
+			var prev = startNum != 1;
+			var next = false;
+			
+			if (endNum * 10 >= replyCnt){
+				endNum = Math.ceil(replyCnt/10.0);
+			}
+			
+			if (endNum * 10 < replyCnt) {
+				next = true;
+			}
+			
+			var str = "<ul class='pagination'>";
+			if (prev) {
+				str+= "<li class='page-item " + active + " '><a class='page-link' href='"
+				+ (startNum - 1) + "'>Previous</a></li>";
+			}
+			
+			for (var i = startNum; i <= endNum; i++) {
+				
+				var active = pageNum == i? "active":"";
+				
+				str += "<li class='page-item'><a class='page-link' href='"
+				+ i + "'>Previous</a></li>";
+			}
+			
+			if (next) {
+				str += "<li class='page-item'><a class='page-link' href='"
+				+ (endNum + 1) + "'>Next</a></li>";
+			}
+			
+			str += "</ul></div>"
+			
+			console.log(str);
+			
+			replyPageFooter.htmml(str);
+		}
 	});
 	
 </script>
