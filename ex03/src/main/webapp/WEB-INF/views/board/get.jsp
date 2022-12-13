@@ -222,8 +222,10 @@
 				}
 				
 				replyUL.html(str);
+				
+				showReplyPage(replyCnt);
 			
-			});
+			}); //end getList
 		} //end showList
 
 		
@@ -382,7 +384,7 @@
 			
 			console.log(str);
 			
-			replyPageFooter.htmml(str);
+			replyPageFooter.html(str);
 		}
 	});
 	

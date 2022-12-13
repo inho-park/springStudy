@@ -27,12 +27,16 @@ var replyService = (function() {
 		})
 	}
 	
+	
 	// 댓글 목록 데이터를 가져오기 위한 함수
 	function getList(param, callback, error) {
 		console.log("reply.js : getList()............");
-		
+
 		var bno = param.bno;
 		var page = param.page || 1;
+		// 실행이 안되는데 여기서 출력이 안됌
+		console.log(param.bno);
+		console.log(param.page);
 		
 		$.getJSON("/reply/pages/" + bno + "/" + page + ".json",
 			function(data){
@@ -42,10 +46,12 @@ var replyService = (function() {
 				}
 		}).fail(function(xhr, status, err){
 			if(error) {
+				console.log("reply.js => getList() => error");
 				error();
 			}
 		});
 	}
+	
 	
 	// 댓글을 삭제하기 위한 함수
 	function remove(rno, callback, error) {
@@ -64,6 +70,7 @@ var replyService = (function() {
 			}
 		})
 	}
+	
 	
 	// 댓글을 수정하기 위한 함수
 	function update(reply, callback, error) {
@@ -88,6 +95,7 @@ var replyService = (function() {
 		});
 	}
 	
+	
 	// 특정 번호에 해당하는 댓글 데이터를 가져오기 위한 함수
 	function get(rno, callback, error) {
 		$.get("/reply/" + rno + ".json", function(result){
@@ -100,6 +108,7 @@ var replyService = (function() {
 			}
 		})
 	}
+	
 	
 	// 댓글의 작성시간에 따른 출력값 수정을 위한 함수
 	function displayTime(timeValue) {
@@ -131,6 +140,7 @@ var replyService = (function() {
 					(dd > 9 ? '' : '0') + dd].join('');
 		}
 	}
+	
 	
 	return {
 		add : add,
