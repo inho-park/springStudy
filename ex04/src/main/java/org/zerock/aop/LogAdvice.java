@@ -11,8 +11,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Component // Bean 인식을 위해
 public class LogAdvice {
-
-	@Before("execution(* org.rerock.SampleService*.*(..))")
+	// @Before("AspectJ의 표현식(expression)(접근제한자 특정 클래스와 메서드)")
+	@Before("execution(* org.rerock.service.SampleService*.*(..))")
 	public void logBefore() {
 		log.info("================================================");
 	}
