@@ -33,6 +33,8 @@ D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2694948808.ind
 \ex02\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2560849400.index
 \exJava\src\main\java
+D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2263995694.index
+\ex04\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\755943323.index
 \ex02\src\main\java
 D:\stsboard\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2415907875.index

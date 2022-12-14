@@ -83,7 +83,7 @@
                 </div>
                 <!-- /.row -->
                 
-                <!-- ´ñ±Û ÀÛ¼º¿ë ÆÇ³Ú ¸¸µé±â -->
+                <!-- ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½Ç³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ -->
                 <div class="row" style="margin-top: 30px">
                 	<div class="col-lg-12">
                 		<!-- /.panel -->
@@ -109,7 +109,7 @@
 	                							2022-12-09
 	                						</small>
 	                					</div>
-	                					<p>¹º°¡ ¹®Á¦°¡ ÀÖ´Ù..</p>
+	                					<p>ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½..</p>
                 					</div>
                 				</ul>
                 			</div>
@@ -185,7 +185,7 @@
 		
 		showList(1);
 		
-		// ´ñ±ÛÀ» º¸¿©ÁÖ´Â ÇÔ¼ö displayTime À» ÀÌ¿ëÇØ replyDate ¼öÁ¤
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½ displayTime ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ replyDate ï¿½ï¿½ï¿½ï¿½
 		function showList(page) {
 			
 			console.log("show List : " + page);
@@ -240,11 +240,11 @@
 		var modalRemoveBtn = $("#modalRemoveBtn");
 		var modalRegisterBtn = $("#modalRegisterBtn");
 		
-		// ³¯Â¥ ¼û±â±â ¹× ´Ý±â ¹öÆ° ¼û±â±â => ´ñ±Û ÀÛ¼ºÇÒ ¶§ »ç¿ë
+		// ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ý±ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ => ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 		$("#addReplyBtn").on("click", function(e) {
 			
 			modal.find("input").val("");
-			modalInputReplyDate.closest("div").hide(); // div Ã¤·Î ¼û±è
+			modalInputReplyDate.closest("div").hide(); // div Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			modal.find("button[id!='modalCloseBtn']").hide(); // 
 			
 			modalRegisterBtn.show();
@@ -253,14 +253,14 @@
 			
 		});
 		
-		// ´ñ±ÛÀ» Å¬¸¯ÇÒ ¶§ È°¼ºÈ­ => ´ñ±Û ¼öÁ¤ ¹× »èÁ¦ ±â´É¿¡ »ç¿ë
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È°ï¿½ï¿½È­ => ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¿ï¿½ ï¿½ï¿½ï¿½
 		$(".chat").on("click", "li", function(e){
 			
 			var rno = $(this).data("rno");
 			console.log(rno);
 			
 			replyService.get(rno, function(reply){
-				// ´ñ±ÛÀ» ¼öÁ¤ ¹× »èÁ¦ÇÏ±â À§ÇØ¼­´Â ¾îÂ÷ÇÇ ÇØ´ç ´ñ±ÛÀ» Á¶È¸ÇØ¾ßÇÔ => modal ¿¡ °¡Á®¿À´Â ±â´ÉÀ» Ãß°¡
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ø¾ï¿½ï¿½ï¿½ => modal ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 				modalInputReply.val(reply.reply);
 				modalInputReplyer.val(reply.replyer);
 				modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
@@ -280,9 +280,9 @@
 		
 		
 //=========================================================================================		
-		// ´ñ±Û CUD ±â´ÉÀ» ÇÏ³ªÀÇ Modal À» °¡Áö°í modal ¿ä¼ÒµéÀ» ¼û±â°í º¸¿©ÁÖ´Â ¹æ½ÄÀ¸·Î »ç¿ë
+		// ï¿½ï¿½ï¿½ CUD ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Modal ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ modal ï¿½ï¿½Òµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
-		// ´ñ±Û Ãß°¡ ±â´É
+		// ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½
 		modalRegisterBtn.on("click", function(e){
 			
 			var reply = {
@@ -298,16 +298,16 @@
 				modal.modal("hide");
 
 				// showList(1);
-				// page ¹øÈ£°¡ -1 ·Î Àü´ÞµÇ¸é ¸¶Áö¸· ÆäÀÌÁö¸¦ Ã£¾Æ¼­ ´Ù½Ã È£Ãâ
+				// page ï¿½ï¿½È£ï¿½ï¿½ -1 ï¿½ï¿½ ï¿½ï¿½ï¿½ÞµÇ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½Ù½ï¿½ È£ï¿½ï¿½
 				showList(-1);
 			});
 			
 		});
 		
-		// ´ñ±Û ¼öÁ¤ ±â´É
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		modalModBtn.on("click",function(e) {
 			
-			// data-rno ¼Ó¼º »ç¿ë
+			// data-rno ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½
 			var reply = {rno : modal.data("rno"),
 						reply : modalInputReply.val()};
 			
@@ -315,22 +315,24 @@
 			replyService.update(reply, function(result){
 				
 				alert(result);
+				
 				modal.modal("hide");
-				showList(1);
+				showList(pageNum);
 			})
 		});
 		
-		// ´ñ±Û »èÁ¦ ±â´É
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		modalRemoveBtn.on("click", function(e){
 			
-			// data-rno ¼Ó¼º »ç¿ë
+			// data-rno ï¿½Ó¼ï¿½ ï¿½ï¿½ï¿½
 			var rno = modal.data("rno");
 			
 			replyService.remove(rno, function(result){
 				
 				alert(result);
+				
 				modal.modal("hide");
-				showList(1);
+				showList(pageNum);
 			});
 		});
 		
@@ -340,7 +342,7 @@
 		
 //=========================================================================================
 		
-	// ´ñ±Û ÆäÀÌÁö¹øÈ£Ã³¸® ·ÎÁ÷
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		var pageNum = 1;
 		var replyPageFooter = $(".panel-footer");
 		
@@ -363,7 +365,7 @@
 			var str = "<ul class='pagination'>";
 			
 			if (prev) {
-				str+= "<li class='page-item " + active + " '><a class='page-link' href='"
+				str+= "<li class='page-item " + active + "'><a class='page-link' href='"
 				+ (startNum - 1) + "'>Previous</a></li>";
 			}
 			
@@ -386,11 +388,27 @@
 			
 			replyPageFooter.html(str);
 		}
+		
+		
+		
+		
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+		replyPageFooter.on("click","li a", function(e){
+			
+			// ï¿½î¶² ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ø´ï¿½ ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			e.preventDefault();
+			
+			var targetPageNum = $(this).attr("href");
+			console.log("targetPageNum = " + targetPageNum);
+			
+			pageNum = targetPageNum;
+			showList(pageNum);
+		});
 	});
 	
 </script>
 
-<!-- Å×½ºÆ®¿ë ÀÚ¹Ù½ºÅ©¸³Æ® -->
+<!-- ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½Ú¹Ù½ï¿½Å©ï¿½ï¿½Æ® -->
 <script type="text/javascript">
 	
 /* 	console.log("====================================");
@@ -405,7 +423,7 @@
 			replyer : "tester",
 			bno : bnoValue
 		},
-		// result(reply.js ¿¡¼­ ³Ñ¾î¿Â) ¸¦ alert ·Î ¶ç¿ì±â
+		// result(reply.js ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½) ï¿½ï¿½ alert ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		function(result) {
 			alert("RESULT : " + result);
 		}
@@ -425,7 +443,7 @@
 	
 	
 	
-// rno ¿¡ ÇØ´çÇÏ´Â ´ñ±Û »èÁ¦ÇÏ±â
+// rno ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	replyService.remove(44, function(result) {
 		
 		console.log(result);
@@ -441,7 +459,7 @@
 		
 		
 
-// RequestBody·Î JSONÀ» ReplyVO·Î º¯È¯ÇÏ¿© rno ¸¦ °¡Á®¿Í update ÇÏ´Â ±¸Á¶
+// RequestBodyï¿½ï¿½ JSONï¿½ï¿½ ReplyVOï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½ rno ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	replyService.update({
 		rno : 22,
 		bno : bnoValue,
@@ -453,7 +471,7 @@
 	
 	
 	
-// Æ¯Á¤ ¹øÈ£ÀÇ ´ñ±Û Á¶È¸¸¦ À§ÇÑ get ¹æ½Ä Ãß°¡
+// Æ¯ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ get ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	replyService.get(10, function(data){
 		console.log(data);
 	}); */
