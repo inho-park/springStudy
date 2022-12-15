@@ -24,4 +24,16 @@ public class SampleServiceTests {
 		log.info(service);
 		log.info(service.getClass().getName());
 	}
+	
+	@Test
+	public void testAdd() throws Exception {
+		
+		log.info(service.doAdd("123", "345"));
+	}
+	
+	@Test
+	public void testAddError() throws Exception {
+		
+		log.info(service.doAdd("123", "abc"));
+	}
 }
