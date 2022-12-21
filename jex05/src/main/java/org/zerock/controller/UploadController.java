@@ -42,5 +42,31 @@ public class UploadController {
 		}
 	}
 	
+	@GetMapping("/uploadAjax")
+	public void uploadAjax() {
+		
+		log.info("upload ajax");
+	}
 	
+	
+	@PostMapping("/uploadAjaxAction")
+	public void uploadAjaxPost(MultipartFile[] uploadFile, Model model) {
+		
+		for (MultipartFile multipartFile : uploadFile) {
+			
+			String uploadFolder = "D:\\folderForPractice";
+			
+			log.info("--------------------------------------------------------------------");
+			log.info("UploadFormPost => File Name : " + multipartFile.getOriginalFilename());
+			log.info("UploadFormPost => File Size : " + multipartFile.getSize());
+			
+			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+			
+			try {
+				multipartFile.transferTo(saveFile);
+			}catch(Exception e) {
+				log.error(e.getMessage());
+			}
+		}
+	}
 }
