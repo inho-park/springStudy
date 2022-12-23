@@ -97,6 +97,8 @@
 				return true;
 			}
 			
+			
+			
 			// 추가한 사진들을 확인하기 위한 목록 생성
 			var uploadResult = $(".uploadResult ul");
 			function showUploadedFile(uploadResultArr) {
@@ -104,17 +106,25 @@
 				var str = "";
 				$(uploadResultArr).each(function(i, obj){
 					if (!obj.image) {
-						str += "<li><img src='/resources/img/attach.png'" + obj.fileName + "</li>";
+						var fileCallPath = encodeURIComponent(obj.uploadPath + "/"
+										 + obj.uuid + "_" + obj.fileName);
+						
+						
+						str += "<li><a href='/download?fileName=" + fileCallPath + "'>"
+						 	+ "<img src='/resources/img/attach.png'" + obj.fileName 
+						 	+ "</a></li>";
 					}else {						
-						// str += "<li>" + obj.fileName + "</li>";
+						
 						var fileCallPath = encodeURIComponent(obj.uploadPath+
 								"/s_" + obj.uuid + "_" + obj.fileName);
 						
-						str += "<li><img src ='/display?fileName="+ fileCallPath +"'></li>"
+						str += "<li><img src ='/display?fileName=" + fileCallPath +"'></li>"
 					}
 				});
 				uploadResult.append(str);
 			}
+			
+			
 			
 			
 			$("#uploadBtn").on("click", function(e){

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.zerock.domain.AttachFileDTO;
@@ -67,47 +69,7 @@ public class UploadController {
 	}
 	
 	
-//	@PostMapping("/uploadAjaxAction")
-//	public void uploadAjaxPost(MultipartFile[] uploadFile) {
-//		
-//		//make folder
-//		String uploadFolder = "D:\\folderForPractice";
-//		File uploadPath = new File(uploadFolder, getFolder());
-//		log.info("upload path : " + uploadPath);
-//		
-//		if(!uploadPath.exists()) uploadPath.mkdirs();
-//		
-//		for (MultipartFile multipartFile : uploadFile) {
-//			
-//			
-//			log.info("--------------------------------------------------------------------");
-//			log.info("UploadFormPost => File Name : " + multipartFile.getOriginalFilename());
-//			log.info("UploadFormPost => File Size : " + multipartFile.getSize());
-//			
-//			//UUID : Universally Unique Identifier
-//			UUID uuid = UUID.randomUUID();
-//			String uploadFileName = uuid.toString() + "_" + multipartFile.getOriginalFilename();
-//			log.info(uploadFileName);
-//			
-//			try {
-//				File saveFile = new File(uploadFolder, uploadFileName);
-//				multipartFile.transferTo(saveFile);
-//				// check image type file
-//				if (checkImageType(saveFile)) {
-//					FileOutputStream thumbnail = 
-//							new FileOutputStream(
-//									new File(uploadPath,"s_" + uploadFileName));
-//					
-//					Thumbnailator
-//					.createThumbnail(multipartFile.getInputStream(),thumbnail,100,100);
-//					
-//					thumbnail.close();
-//				}
-//			}catch(Exception e) {
-//				log.error(e.getMessage());
-//			}
-//		}
-//	}
+
 	
 	@PostMapping(value = "/uploadAjaxAction" ,
 				produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -163,6 +125,8 @@ public class UploadController {
 	}
 	
 	
+	
+	
 	@GetMapping("/display")
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName) {
@@ -190,31 +154,74 @@ public class UploadController {
 	}
 	
 	
+	
+	
 	@GetMapping(value = "/download",
 				produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	@ResponseBody
-	public ResponseEntity<Resource> downloadFile(String fileName) {
-		
+	public ResponseEntity<Resource> downloadFile(
+			@RequestHeader("User-Agent") String userAgent,	
+			String fileName) {
+		log.info("userAgent : " + userAgent);
 		log.info("download file : " + fileName);
 		
-		Resource resource = new FileSystemResource("D:/folderForPractice" + fileName);
+		Resource resource = new FileSystemResource("D:/folderForPractice/" + fileName);
 		
 		log.info("resource : " + resource);
 		
 		String resourceName = resource.getFilename();
 		
+		// Remove UUID
+		String resourceOriginalName = resourceName.substring(
+										resourceName.indexOf("_") + 1);
+		
 		HttpHeaders headers = new HttpHeaders();
 		
 		try {
+			String downloadName = null;
+			
+			// IE 망해서 상관없음
+			if (userAgent.contains("Trident")) {
+				log.info("IE browser");
+				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8").replace("/+", " ");
+			}
+			
+			else if (userAgent.contains("Edge")) {
+				log.info("Edge browser");
+				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8");
+				log.info("Edge Name : " + downloadName);
+			}
+			
+			else {
+				log.info("chrome browser");
+				downloadName = new String(resourceOriginalName.getBytes("UTF-8"), "ISO-8859-1");
+			}
+			
+			
 			headers.add("Content-Disposition", 
 						"attachment; filename=" + 
-						new String(resourceName.getBytes("UTF-8"),"ISO-8859-1"));
+						downloadName);
 		} catch(UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		
-		return new ResponseEntity<Resource>(resource, headers,HttpStatus.OK);
+		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// folder name 을 년/월/일 로 자동으로 생성하여 저장해줌
 	private String getFolder() {
