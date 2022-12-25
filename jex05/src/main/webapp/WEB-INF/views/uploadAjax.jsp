@@ -73,6 +73,10 @@
 	</div>
 	
     <script>
+    	function showImage(fileCallPath){
+    		alert(fileCallPath);
+    	}
+    
 		$(document).ready(function(){
 			
 			// 파일 확장자를 검사하기 위한 변수
@@ -104,6 +108,7 @@
 			function showUploadedFile(uploadResultArr) {
 				
 				var str = "";
+				
 				$(uploadResultArr).each(function(i, obj){
 					if (!obj.image) {
 						var fileCallPath = encodeURIComponent(obj.uploadPath + "/"
@@ -118,7 +123,12 @@
 						var fileCallPath = encodeURIComponent(obj.uploadPath+
 								"/s_" + obj.uuid + "_" + obj.fileName);
 						
-						str += "<li><img src ='/display?fileName=" + fileCallPath +"'></li>"
+						var originPath = obj.uploadPath + "\\" + obj.uuid + "_" + obj.fileName;
+						
+						originPath = originPath.replace(new RegExp(/\\/g),"/");
+						
+						str += "<li><a href=\"javascript:showImage(\'" + originPath +"\')\">" + 
+						"<img src ='/display?fileName=" + fileCallPath +"'></li>"
 					}
 				});
 				uploadResult.append(str);
