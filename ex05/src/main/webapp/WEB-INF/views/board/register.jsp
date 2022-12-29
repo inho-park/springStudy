@@ -74,9 +74,25 @@
                             </form>
                             <hr>
                         </div>
+                        <div class="col-lg-12">
+                		<div class="panel panel-default">
+                			<div class="panel-hading">File Attach</div>
+                			<div class="panel-body">
+                				<div class="form-group uploadDiv">
+                					<input type="file" name="uploadFile" multiple>
+                				</div>
+                				
+                				<div class="uploadResult">
+                					<ul>
+                					
+                					</ul>
+                				</div>
+                			</div>
+                		</div>
+                	</div>
                     </div>
                 </div>
-                <!-- /.row -->
+                <!--
                 <div class="row">
                 	<div class="col-lg-12">
                 		<div class="panel panel-default">
@@ -95,8 +111,69 @@
                 		</div>
                 	</div>
                 </div>
+                /.row -->
             </div>
         </div>
     </div>
-
+	<script>
+		$(document).ready(function(e){
+			var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+			var maxSize = 5242880; // 5MB
+			
+			function checkExtension(fileName, fileSize){
+				
+				if(fileSize >= maxSize) {
+					alert("파일 사이즈 초과");
+					return false;
+				}
+				
+				if(regex.test(fileName)){
+					alert("해당 종류의 파일은 업로드할 수 없습니다");
+					return false;
+				}
+				
+				return true;
+			}
+			
+			$("input[type='file']").change(function(e){
+				
+				var formData = new FormData();
+				
+				var inputFile = $("input[name='uploadFile']");
+				
+				var files = inputFile[0].files;
+				
+				for (var i=0; i<files.length; i++){
+					
+					if(!checkExtension(files[i].name, files[i].size)){
+						return false;
+					}
+					formData.append("uploadFile", files[i]);
+				}
+				
+				$.ajax({
+					url: '/uploadAjaxAction',
+					processData: false,
+					contentType: false,
+					data: formData,
+					type: 'POST',
+					dataType: 'json',
+					success: function(result){
+						console.log(result);
+					}
+				})
+			});
+			
+			
+			var formObj = $("form[role='form']");
+			
+			$("button[type='submit']").on("click",function(e){
+				
+				e.preventDefault();
+				
+				console.log("submit clicked");
+				
+			});
+		});
+	</script>
 <%@include file="../includes/footer.jsp" %>
