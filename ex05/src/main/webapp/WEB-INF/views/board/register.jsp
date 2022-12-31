@@ -115,7 +115,9 @@
             </div>
         </div>
     </div>
+<%@include file="../includes/footer.jsp" %>
 	<script>
+	
 		$(document).ready(function(e){
 			var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 			var maxSize = 5242880; // 5MB
@@ -135,6 +137,44 @@
 				return true;
 			}
 			
+			function showUploadResult(uploadResultArr) {
+				
+				if(!uploadResultArr || uploadResultArr.length==0) return;
+				
+				var uploadUL = $(".uploadResult ul");
+				
+				var str = "";
+				
+				$(uploadResultArr).each(function(i, obj){
+					if(obj.image) {
+						console.log("showUpload : " + obj.uploadPath + " filename : " + obj.fileName);
+						var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+						
+						str += "<li data-path='" + obj.uploadPath + "'";
+						str += " data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'data-type='" + obj.image + "'";
+						str += "><div>";
+						str += "<span>" + obj.fileName + "</span>";
+						str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+						str += "<img src='${path}/display?fileName=" + fileCallPath + "'>";
+						str += "</div>";
+						str += "</li>";
+					}else {
+						var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+						// var fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
+						
+						str += "<li data-path='" + obj.uploadPath + "'";
+						str += " data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'data-type='" + obj.image + "'";
+						str += "><div>";
+						str += "<span>" + obj.fileName + "</span>";
+						str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file' class='btn btn-warning btn-cricle'><i class='fa fa-times'></i></button><br>";
+						str += "<img src='${path}/resources/img/attach.png'></a>";
+						str += "</div>";
+						str += "</li>";
+					}
+				});
+				uploadUL.append(str);
+			}
+			
 			$("input[type='file']").change(function(e){
 				
 				var formData = new FormData();
@@ -150,7 +190,7 @@
 					}
 					formData.append("uploadFile", files[i]);
 				}
-				
+				console.log(files);
 				$.ajax({
 					url: '/uploadAjaxAction',
 					processData: false,
@@ -160,8 +200,28 @@
 					dataType: 'json',
 					success: function(result){
 						console.log(result);
+						showUploadResult(result);
 					}
-				})
+				});
+			});
+			
+			$(".uploadResult").on("click", "button", function(e) {
+				console.log("delete File");
+				
+				var targetFile = $(this).data("file");
+				var type = $(this).data("type");
+				
+				var targetLi = $(this).closest("li");
+				$.ajax({
+					url : '${path}/deleteFile',
+					data : {fileName: targetFile, type:type},
+					dataType : 'text',
+					type : 'POST',
+					success : function(result) {
+						alert(result);
+						targetLi.remove();
+					}
+				});
 			});
 			
 			
@@ -173,7 +233,10 @@
 				
 				console.log("submit clicked");
 				
+				var str = "";
+				
+				console.dir(jobj);
+				
 			});
 		});
 	</script>
-<%@include file="../includes/footer.jsp" %>
