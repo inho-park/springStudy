@@ -221,8 +221,8 @@ public class UploadController {
 		File file;
 		
 		try {
-			file = new File("d:\\folderForPractice" + URLDecoder.decode(fileName,"UTF-8"));
-			
+			file = new File("D:\\folderForPractice\\" + URLDecoder.decode(fileName,"UTF-8"));
+			log.info("decode path : " + URLDecoder.decode(fileName,"UTF-8"));
 			file.delete();
 			
 			if(type.equals("image")) {

@@ -15,7 +15,6 @@ INDEX VERSION 1.131+D:\stsboard\.metadata\.plugins\org.eclipse.jdt.core
 2402985196.index
 3812875719.index
 1113299953.index
-3828226526.index
 2411435618.index
 1831256383.index
 4144494285.index

@@ -148,7 +148,7 @@
 				$(uploadResultArr).each(function(i, obj){
 					if(obj.image) {
 						console.log("showUpload : " + obj.uploadPath + " filename : " + obj.fileName);
-						var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+						var fileCallPath = encodeURIComponent(obj.uploadPath + "\\s_" + obj.uuid + "_" + obj.fileName);
 						
 						str += "<li data-path='" + obj.uploadPath + "'";
 						str += " data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'data-type='" + obj.image + "'";
@@ -159,7 +159,7 @@
 						str += "</div>";
 						str += "</li>";
 					}else {
-						var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+						var fileCallPath = encodeURIComponent(obj.uploadPath + "\\s_" + obj.uuid + "_" + obj.fileName);
 						// var fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
 						
 						str += "<li data-path='" + obj.uploadPath + "'";
@@ -190,16 +190,16 @@
 					}
 					formData.append("uploadFile", files[i]);
 				}
-				console.log(files);
+				console.log("files : " + files);
 				$.ajax({
-					url: '/uploadAjaxAction',
+					url: '${path}/uploadAjaxAction',
 					processData: false,
 					contentType: false,
 					data: formData,
 					type: 'POST',
 					dataType: 'json',
 					success: function(result){
-						console.log(result);
+						console.log("Result : " + result);
 						showUploadResult(result);
 					}
 				});
@@ -235,7 +235,18 @@
 				
 				var str = "";
 				
-				console.dir(jobj);
+				$(".uploadResult ul li").each(function(i, obj) {
+					var jobj = $(obj);
+					
+					console.dir("jobj : " + jobj);
+					
+					str += "<input type='hidden' name ='attachList["+i+"].fileName' value='"+ jobj.data("filename") + "'>";
+					str += "<input type='hidden' name ='attachList["+i+"].uuid' value='"+ jobj.data("uuid") + "'>";
+					str += "<input type='hidden' name ='attachList["+i+"].uploadPath' value='"+ jobj.data("path") + "'>";
+					str += "<input type='hidden' name ='attachList["+i+"].fileType' value='"+ jobj.data("type") + "'>";
+					console.log("filename : " + i.fileName);
+				});
+				formObj.append(str).submit();
 				
 			});
 		});
