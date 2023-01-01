@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Select"/>
     <fullyQualifiedTypeName name="org.zerock.mapper.BoardMapperTests"/>
     <fullyQualifiedTypeName name="jdk.nashorn.internal.objects.annotations.Setter"/>
@@ -58,6 +57,7 @@
     <fullyQualifiedTypeName name="org.junit.Test"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
     <fullyQualifiedTypeName name="org.zerock.mapper.BoardMapper"/>
-    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="org.zerock.domain.AttachFileDTO"/>
+    <fullyQualifiedTypeName name="org.zerock.mapper.BoardAttachMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 </qualifiedTypeNameHistroy>
