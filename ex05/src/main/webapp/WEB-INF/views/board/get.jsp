@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -13,7 +13,12 @@
 
     <div class="container">
 
-        
+        	<div class="bigPictureWrapper">
+				<div class="bigPicture">
+				
+				</div>
+			</div>	
+			
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="p-5">
@@ -76,6 +81,16 @@
                 				</form>
                 			</div>
                 			<!-- /.panel body -->
+                			<div class="panel panel-heading">Files</div>
+							<div class="panel-body">
+								<div class="form-group uploadDiv">
+									<input type="file" name="uploadFile" multiple />
+								</div>		
+							</div>
+							<div class="uploadResult">
+									<ul>
+									</ul>
+							</div>
                 		</div>
                 		<!-- /.panel panel-default -->
                 	</div>
@@ -83,7 +98,10 @@
                 </div>
                 <!-- /.row -->
                 
-                <!-- ��� �ۼ��� �ǳ� ����� -->
+                
+                
+                
+                <!-- 占쏙옙占� 占쌜쇽옙占쏙옙 占실놂옙 占쏙옙占쏙옙占� -->
                 <div class="row" style="margin-top: 30px">
                 	<div class="col-lg-12">
                 		<!-- /.panel -->
@@ -109,7 +127,7 @@
 	                							2022-12-09
 	                						</small>
 	                					</div>
-	                					<p>���� ������ �ִ�..</p>
+	                					<p>占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙..</p>
                 					</div>
                 				</ul>
                 			</div>
@@ -185,7 +203,7 @@
 		
 		showList(1);
 		
-		// ����� �����ִ� �Լ� displayTime �� �̿��� replyDate ����
+		// 占쏙옙占쏙옙占� 占쏙옙占쏙옙占쌍댐옙 占쌉쇽옙 displayTime 占쏙옙 占싱울옙占쏙옙 replyDate 占쏙옙占쏙옙
 		function showList(page) {
 			
 			console.log("show List : " + page);
@@ -240,11 +258,11 @@
 		var modalRemoveBtn = $("#modalRemoveBtn");
 		var modalRegisterBtn = $("#modalRegisterBtn");
 		
-		// ��¥ ����� �� �ݱ� ��ư ����� => ��� �ۼ��� �� ���
+		// 占쏙옙짜 占쏙옙占쏙옙占� 占쏙옙 占쌥깍옙 占쏙옙튼 占쏙옙占쏙옙占� => 占쏙옙占� 占쌜쇽옙占쏙옙 占쏙옙 占쏙옙占�
 		$("#addReplyBtn").on("click", function(e) {
 			
 			modal.find("input").val("");
-			modalInputReplyDate.closest("div").hide(); // div ä�� ����
+			modalInputReplyDate.closest("div").hide(); // div 채占쏙옙 占쏙옙占쏙옙
 			modal.find("button[id!='modalCloseBtn']").hide(); // 
 			
 			modalRegisterBtn.show();
@@ -253,14 +271,14 @@
 			
 		});
 		
-		// ����� Ŭ���� �� Ȱ��ȭ => ��� ���� �� ���� ��ɿ� ���
+		// 占쏙옙占쏙옙占� 클占쏙옙占쏙옙 占쏙옙 활占쏙옙화 => 占쏙옙占� 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙 占쏙옙�울옙 占쏙옙占�
 		$(".chat").on("click", "li", function(e){
 			
 			var rno = $(this).data("rno");
 			console.log(rno);
 			
 			replyService.get(rno, function(reply){
-				// ����� ���� �� �����ϱ� ���ؼ��� ������ �ش� ����� ��ȸ�ؾ��� => modal �� �������� ����� �߰�
+				// 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙占싹깍옙 占쏙옙占쌔쇽옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌔댐옙 占쏙옙占쏙옙占� 占쏙옙회占쌔억옙占쏙옙 => modal 占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占� 占쌩곤옙
 				modalInputReply.val(reply.reply);
 				modalInputReplyer.val(reply.replyer);
 				modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
@@ -280,9 +298,9 @@
 		
 		
 //=========================================================================================		
-		// ��� CUD ����� �ϳ��� Modal �� ������ modal ��ҵ��� ����� �����ִ� ������� ���
+		// 占쏙옙占� CUD 占쏙옙占쏙옙占� 占싹놂옙占쏙옙 Modal 占쏙옙 占쏙옙占쏙옙占쏙옙 modal 占쏙옙撚占쏙옙占� 占쏙옙占쏙옙占� 占쏙옙占쏙옙占쌍댐옙 占쏙옙占쏙옙占쏙옙占� 占쏙옙占�
 		
-		// ��� �߰� ���
+		// 占쏙옙占� 占쌩곤옙 占쏙옙占�
 		modalRegisterBtn.on("click", function(e){
 			
 			var reply = {
@@ -298,16 +316,16 @@
 				modal.modal("hide");
 
 				// showList(1);
-				// page ��ȣ�� -1 �� ���޵Ǹ� ������ �������� ã�Ƽ� �ٽ� ȣ��
+				// page 占쏙옙호占쏙옙 -1 占쏙옙 占쏙옙占쌨되몌옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 찾占싣쇽옙 占쌕쏙옙 호占쏙옙
 				showList(-1);
 			});
 			
 		});
 		
-		// ��� ���� ���
+		// 占쏙옙占� 占쏙옙占쏙옙 占쏙옙占�
 		modalModBtn.on("click",function(e) {
 			
-			// data-rno �Ӽ� ���
+			// data-rno 占쌈쇽옙 占쏙옙占�
 			var reply = {rno : modal.data("rno"),
 						reply : modalInputReply.val()};
 			
@@ -321,10 +339,10 @@
 			})
 		});
 		
-		// ��� ���� ���
+		// 占쏙옙占� 占쏙옙占쏙옙 占쏙옙占�
 		modalRemoveBtn.on("click", function(e){
 			
-			// data-rno �Ӽ� ���
+			// data-rno 占쌈쇽옙 占쏙옙占�
 			var rno = modal.data("rno");
 			
 			replyService.remove(rno, function(result){
@@ -342,7 +360,7 @@
 		
 //=========================================================================================
 		
-	// ��� ��������ȣó�� ����
+	// 占쏙옙占� 占쏙옙占쏙옙占쏙옙占쏙옙호처占쏙옙 占쏙옙占쏙옙
 		var pageNum = 1;
 		var replyPageFooter = $(".panel-footer");
 		
@@ -392,10 +410,10 @@
 		
 		
 		
-		// ������ ��ȣ�� Ŭ������ �� ���ο� ����� ���������� ó��
+		// 占쏙옙占쏙옙占쏙옙 占쏙옙호占쏙옙 클占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占싸울옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 처占쏙옙
 		replyPageFooter.on("click","li a", function(e){
 			
-			// � �̺�Ʈ�� ���������� ó������ ���� ���, �ش� �̺�Ʈ�� ���� �������� �⺻ ������ �������� �ʵ��� ����
+			// 占쏘떤 占싱븝옙트占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 처占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占�, 占쌔댐옙 占싱븝옙트占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占썩본 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십듸옙占쏙옙 占쏙옙占쏙옙
 			e.preventDefault();
 			
 			var targetPageNum = $(this).attr("href");
@@ -408,7 +426,7 @@
 	
 </script>
 
-<!-- �׽�Ʈ�� �ڹٽ�ũ��Ʈ -->
+<!-- 占쌓쏙옙트占쏙옙 占쌘바쏙옙크占쏙옙트 -->
 <script type="text/javascript">
 	
 /* 	console.log("====================================");
@@ -423,7 +441,7 @@
 			replyer : "tester",
 			bno : bnoValue
 		},
-		// result(reply.js ���� �Ѿ��) �� alert �� ����
+		// result(reply.js 占쏙옙占쏙옙 占싼억옙占�) 占쏙옙 alert 占쏙옙 占쏙옙占쏙옙
 		function(result) {
 			alert("RESULT : " + result);
 		}
@@ -443,7 +461,7 @@
 	
 	
 	
-// rno �� �ش��ϴ� ��� �����ϱ�
+// rno 占쏙옙 占쌔댐옙占싹댐옙 占쏙옙占� 占쏙옙占쏙옙占싹깍옙
 	replyService.remove(44, function(result) {
 		
 		console.log(result);
@@ -459,7 +477,7 @@
 		
 		
 
-// RequestBody�� JSON�� ReplyVO�� ��ȯ�Ͽ� rno �� ������ update �ϴ� ����
+// RequestBody占쏙옙 JSON占쏙옙 ReplyVO占쏙옙 占쏙옙환占싹울옙 rno 占쏙옙 占쏙옙占쏙옙占쏙옙 update 占싹댐옙 占쏙옙占쏙옙
 	replyService.update({
 		rno : 22,
 		bno : bnoValue,
@@ -471,7 +489,7 @@
 	
 	
 	
-// Ư�� ��ȣ�� ��� ��ȸ�� ���� get ��� �߰�
+// 특占쏙옙 占쏙옙호占쏙옙 占쏙옙占� 占쏙옙회占쏙옙 占쏙옙占쏙옙 get 占쏙옙占� 占쌩곤옙
 	replyService.get(10, function(data){
 		console.log(data);
 	}); */
@@ -495,5 +513,57 @@
 			operForm.attr("action","/board/list");
 			operForm.submit();
 		});
+
+		(function() {
+			
+			var bno = '<c:out value="${board.bno}"/>';
+			
+			$.getJSON("/board/getAttachList", {bno:bno}, function(arr){
+				console.log(arr);
+				
+				var str = "";
+				
+				$(arr).each(function(i,attach){
+					
+					//image type
+					if(attach.fileType){
+						
+						var fileCallPath = encodeURIComponent(
+								attach.uploadPath + "/s_" 
+								+ attach.uuid + "_" 
+								+ attach.fileName);
+						
+						console.log("file Path [" + i + "] : " + fileCallPath);
+						
+						str += "<li data-path='" + attach.uploadPath 
+							+ "' data-uuid='" + attach.uuid 
+							+ "' data-filename='" + attach.fileName 
+							+ "' data-type='" + attach.fileType + "' >";
+							
+						str += "<div>";
+						str += "<img src='${path}/display?fileName=" + fileCallPath + "'>";
+						str += "</div>";
+						str += "</li>";
+							
+					}
+					else {
+						str += "<li data-path='" + attach.uploadPath 
+						+ "' data-uuid='" + attach.uuid 
+						+ "' data-filename='" + attach.fileName 
+						+ "' data-type='" + attach.fileType + "' ><div>";
+						
+						str += "<span>" + attach.fileName + "</span><br>";
+						str += "<img src='${path}/resources/img/attach.png'>";
+						str += "</div>";
+						str += "</li>";
+					}
+				});
+				
+				$(".uploadResult ul").html(str);	
+			});
+			
+		})();
+		
 	});
+	
 </script>
