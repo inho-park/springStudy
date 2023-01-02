@@ -81,16 +81,6 @@
                 				</form>
                 			</div>
                 			<!-- /.panel body -->
-                			<div class="panel panel-heading">Files</div>
-							<div class="panel-body">
-								<div class="form-group uploadDiv">
-									<input type="file" name="uploadFile" multiple />
-								</div>		
-							</div>
-							<div class="uploadResult">
-									<ul>
-									</ul>
-							</div>
                 		</div>
                 		<!-- /.panel panel-default -->
                 	</div>
@@ -99,7 +89,16 @@
                 <!-- /.row -->
                 
                 
-                
+                <div class="row" style="margin-top: 30px">
+                	<div class="panel panel-heading">Files</div>
+							<div class="panel-body">
+								<div class="uploadResult">
+										<ul>
+										</ul>
+								</div>
+									
+							</div>
+                </div>
                 
                 <!-- 占쏙옙占� 占쌜쇽옙占쏙옙 占실놂옙 占쏙옙占쏙옙占� -->
                 <div class="row" style="margin-top: 30px">
@@ -519,7 +518,7 @@
 			var bno = '<c:out value="${board.bno}"/>';
 			
 			$.getJSON("/board/getAttachList", {bno:bno}, function(arr){
-				console.log(arr);
+				console.log("arr : "+arr);
 				
 				var str = "";
 				
@@ -541,7 +540,7 @@
 							+ "' data-type='" + attach.fileType + "' >";
 							
 						str += "<div>";
-						str += "<img src='${path}/display?fileName=" + fileCallPath + "'>";
+						str += "<img src='/display?fileName=" + fileCallPath + "'>";
 						str += "</div>";
 						str += "</li>";
 							
@@ -564,6 +563,40 @@
 			
 		})();
 		
+	});
+	
+	$(".uploadResult").on("click", "li", function(e) {
+		console.log("view image");
+		
+		var liObj = $(this);
+		
+		console.log(liObj);
+		console.log(liObj.data("filename"));
+		
+		var path = encodeURIComponent(liObj.data("path") + "/" + liObj.data("uuid") + "_" + liObj.data("filename"));
+		
+		if(liObj.data("type")) {
+			showImage(path.replace(new RegExp(/\\/g), "/"));
+		}else {
+			self.location = "${path}/download?fileName=" + path;
+		}
+	});
+	
+	function showImage(fileCallPath) {
+		alert(fileCallPath);
+		
+		$(".bigPictureWrapper").css("display", "flex").show();
+		
+		$(".bigPicture")
+		.html("<img src='${path}/display?fileName=" + fileCallPath + "'>")
+		.animate({width:'100%', height:'100%'}, 1000);
+	}
+	
+	$(".bigPictureWrapper").on("click", function(e) {
+		$(".bigPicture").animate({width: '0%', height: '0%'}, 1000);
+		setTimeout(function() {
+			$(".bigPictureWrapper").hide();
+		}, 1000);
 	});
 	
 </script>
