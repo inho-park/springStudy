@@ -1,5 +1,8 @@
 package org.zerock.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -110,19 +113,25 @@ public class BoardController {
 	
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr,
-		@ModelAttribute("cri") Criteria cri) {
+		// @ModelAttribute("cri") 
+		Criteria cri) {
 		log.info("remove..........................................."+bno);
 		
+		List<BoardAttachVO> attachList = service.getAttachList(bno);
+		
+		
 		if (service.remove(bno)) {
+			deleteFiles(attachList);
 			rttr.addFlashAttribute("result", "remove");
 		}
 		
-		rttr.addAttribute("pageNum",cri.getPageNum());
-		rttr.addAttribute("amount",cri.getAmount());
-		rttr.addAttribute("type",cri.getType());
-		rttr.addAttribute("keyword",cri.getKeyword());
+//		rttr.addAttribute("pageNum",cri.getPageNum());
+//		rttr.addAttribute("amount",cri.getAmount());
+//		rttr.addAttribute("type",cri.getType());
+//		rttr.addAttribute("keyword",cri.getKeyword());
 		
-		return "redirect:/board/list";
+		
+		return "redirect:/board/list" + cri.getListLink();
 	}
 	
 	
@@ -137,5 +146,53 @@ public class BoardController {
 		log.info("getAttachList : " + bno);
 		
 		return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+		
+		if (attachList == null || attachList.size() == 0) return;
+		
+		log.info("deleteFiles...................................");
+		log.info("attachList : " + attachList);
+		
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get(
+						"D:\\folderForPractice\\" + attach.getUploadPath()
+						+ "\\" + attach.getUuid()
+						+ "_" + attach.getFileName()
+				);
+				
+				Files.deleteIfExists(file);
+				
+				if (Files.probeContentType(file).startsWith("image")) {
+					Path thumbNail = Paths.get(
+							"D:\\folderForPractice\\" + attach.getUploadPath()
+							+ "\\s_" + attach.getUuid()
+							+ "_" + attach.getFileName()
+					);
+					
+					Files.delete(thumbNail);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 }
