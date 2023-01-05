@@ -13,6 +13,12 @@
 
 
     <div class="container">
+    
+    <div class="bigPictureWrapper">
+		<div class="bigPicture">
+				
+		</div>
+	</div>
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -81,6 +87,19 @@
                         </div>
                     </div>
                 </div>
+            	 <div class="row" style="margin-top: 30px">
+                	<div class="panel panel-heading">Files</div>
+					<div class="panel-body">
+						<div class="form-group uploadDiv">
+							<input type="file" name="uploadFile" mutiple='multiple'>
+						</div>
+						<div class="uploadResult">
+							<ul>
+							</ul>
+						</div>
+									
+					</div>
+                </div>
             </div>
         </div>
     </div>
@@ -90,6 +109,74 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		// attachList ¿¡¼­ ²¨³»±â
+		(function() {
+			
+			var bno = '<c:out value="${board.bno}"/>';
+			
+			$.getJSON("/board/getAttachList", {bno:bno}, function(arr){
+				console.log("arr : "+arr);
+				
+				var str = "";
+				
+				$(arr).each(function(i,attach){
+					
+					//image type
+					if(attach.fileType){
+						
+						var fileCallPath = encodeURIComponent(
+								attach.uploadPath + "/s_" 
+								+ attach.uuid + "_" 
+								+ attach.fileName);
+						
+						console.log("file Path [" + i + "] : " + fileCallPath);
+						
+						str += "<li data-path='" + attach.uploadPath 
+							+ "' data-uuid='" + attach.uuid 
+							+ "' data-filename='" + attach.fileName 
+							+ "' data-type='" + attach.fileType + "' >";
+							
+						str += "<div>";
+						str += "<span> " + attach.uploadPath + "</span>";
+						str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='image'";
+						str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+						str += "<img src='/display?fileName=" + fileCallPath + "'>";
+						str += "</div>";
+						str += "</li>";
+							
+					}
+					else {
+						str += "<li data-path='" + attach.uploadPath 
+						+ "' data-uuid='" + attach.uuid 
+						+ "' data-filename='" + attach.fileName 
+						+ "' data-type='" + attach.fileType + "' ><div>";
+						
+						str += "<span>" + attach.fileName + "</span>";
+						str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='image'";
+						str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+						str += "<img src='${path}/resources/img/attach.png'>";
+						str += "</div>";
+						str += "</li>";
+					}
+				});
+				
+				$(".uploadResult ul").html(str);	
+			});
+			
+		})();
+		
+		
+		$(".uploadResult").on("click","button",function(e){
+			console.log("delete file");
+			
+			if (confirm("Remove this file? ")){
+				var targetLi = $(this).closest("li");
+				targetLi.remove();
+			}
+		});
+		
+		
 		var formObj = $("form");
 		
 		$('button').on("click", function(e){
