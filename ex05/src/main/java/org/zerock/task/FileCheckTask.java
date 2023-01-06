@@ -40,11 +40,11 @@ public class FileCheckTask {
 	
 	// Unix 계열에서 사용된 스케줄러 프로그램 이름
 	@Scheduled(cron="0 " // seconds(0 ~ 59)
-			+ "0 " // minutes(0 ~ 59)
-			+ "2 " // hours(0 ~ 59)
-			+ "* " // day(1 ~ 31)
-			+ "* " // seconds(1 ~ 12)
-			+ "*") // seconds(1 ~ 7)
+					+ "0 " // minutes(0 ~ 59)
+					+ "2 " // hours(0 ~ 59)
+					+ "* " // day(1 ~ 31)
+					+ "* " // seconds(1 ~ 12)
+					+ "*") // seconds(1 ~ 7)
 	public void checkFiles() throws Exception {
 		
 		log.warn("File Check Task Run......................................");
@@ -79,6 +79,9 @@ public class FileCheckTask {
 				file -> fileListPaths.contains(file.toPath()) == false);
 		
 		log.warn("============================================================");
-		for (File file : removeFiles) log.warn(file.getAbsolutePath());
+		for (File file : removeFiles) {
+			log.warn(file.getAbsolutePath());
+			file.delete();
+		}
 	}
 }
