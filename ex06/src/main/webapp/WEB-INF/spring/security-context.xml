@@ -7,32 +7,26 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--
-	<security:http auto-config="true" use-expressions="true">
-		
-		<security:intercept-url pattern="/sample/all" access="permitAll"/>
-		
-		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
-		
-		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
-		
-		<security:form-login/>
-		
-		<security:access-denied-handler error-page="/accessError"/>
-	</security:http>
- -->
 
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource" />
+<!-- change to BCrypt 
 			<security:password-encoder ref="customPasswordEncoder"/>
+ -->
+ 			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
 	
 	<bean id="customAccessDenied" class="org.zerock.security.CustomAccessDeniedHandler"></bean>
 	<bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean>
+<!--
 	<bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder"></bean>
+ -->
+ 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+ 
+ 
 	<!-- custom 에러처리 클래스를 만들어서 에러 처리하기 -->
 	<security:http>
 		<security:intercept-url pattern="/sample/all" access="permitAll"/>
@@ -47,5 +41,19 @@
 			authentication-success-handler-ref="customLoginSuccess"/>
 		<security:logout logout-url="/customLogout" invalidate-session="true"/>
 	</security:http>
+<!--
+	<security:http auto-config="true" use-expressions="true">
+		
+		<security:intercept-url pattern="/sample/all" access="permitAll"/>
+		
+		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
+		
+		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
+		
+		<security:form-login/>
+		
+		<security:access-denied-handler error-page="/accessError"/>
+	</security:http>
+ -->
 
 </beans>
