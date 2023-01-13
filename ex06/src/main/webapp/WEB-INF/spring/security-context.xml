@@ -9,11 +9,27 @@
 
 
 	<security:authentication-manager>
-		<security:authentication-provider>
+		<security:authentication-provider
+		user-service-ref="customUserDetailsService">
+
+<!-- change to username-query ( instead of PreparedStatement
 			<security:jdbc-user-service data-source-ref="dataSource" />
+ -->
+<!-- CustomUserDetailsService 를 사용할 때는 provider 에 의존성 주입을 하기 때문에 
+	 mapper 객체의 의존성을 주입 받으므로 jdbc-user-service 를 사용할 수 없다
+	 쉽게 말하면 query문이 겹침
+	 
+			<security:jdbc-user-service data-source-ref="dataSource"
+ 				users-by-username-query=
+ 				"select userid, userpw, enabled from tbl_member where userid=?"
+ 				authorities-by-username-query="
+ 				select userid, auth from tbl_member_auth where userid=?"
+ 			/>
+ -->
 <!-- change to BCrypt 
 			<security:password-encoder ref="customPasswordEncoder"/>
  -->
+ 			
  			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
@@ -26,6 +42,7 @@
  -->
  	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
  
+ 	<bean id="customUserDetailsService" class="org.zerock.security.CustomUserDetailsService"></bean>
  
 	<!-- custom 에러처리 클래스를 만들어서 에러 처리하기 -->
 	<security:http>
