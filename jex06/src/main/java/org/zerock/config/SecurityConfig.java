@@ -9,10 +9,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.zerock.security.CustomLoginSuccessHandler;
+import org.zerock.security.CustomUserDetailsService;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -48,16 +50,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		log.info("configure JDBC................................................");
+		// JDBC 로 인증 구현하기
+//		log.info("configure JDBC................................................");
+//		
+//		String queryUser = "select userid, userpw, enabled from tbl_member where userid=?";
+//		String queryDetails = "select userid, auth from tbl_member_auth where userid=?";
+//		
+//		auth.jdbcAuthentication()
+//			.dataSource(dataSource)
+//			.passwordEncoder(passwordEncoder())
+//			.usersByUsernameQuery(queryUser)
+//			.authoritiesByUsernameQuery(queryDetails);
 		
-		String queryUser = "select userid, userpw, enabled from tbl_member where userid=?";
-		String queryDetails = "select userid, auth from tbl_member_auth where userid=?";
-		
-		auth.jdbcAuthentication()
-			.dataSource(dataSource)
-			.passwordEncoder(passwordEncoder())
-			.usersByUsernameQuery(queryUser)
-			.authoritiesByUsernameQuery(queryDetails);
+		auth.userDetailsService(customUserService())
+			.passwordEncoder(passwordEncoder());
 	}
 	
 	@Override
@@ -87,5 +93,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public UserDetailsService customUserService() {
+		return new CustomUserDetailsService();
 	}
 }
