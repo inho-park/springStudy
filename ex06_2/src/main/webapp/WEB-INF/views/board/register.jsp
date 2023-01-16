@@ -36,6 +36,7 @@
                                             placeholder="Last Name">
                                     </div>
                                 </div>  -->
+                                <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
                                 <div class="form-group">
                                 	<label>Title</label>
                                     <input type="text" class="form-control form-control-user"
