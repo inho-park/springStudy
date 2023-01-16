@@ -3,6 +3,7 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -51,6 +52,13 @@
                                 	<label>Book Content</label>
                                 	<textarea class="form-control" rows="3" name="content">
                                 	</textarea>
+                                </div>
+                                <div class="form-group">
+                                	<label>Registrant</label>
+                                    <input type="text" class="form-control form-control-user"
+                                    	 name="registrant"
+                                        value='<sec:authentication property="principal.username"/>'
+                                        readonly="readonly">
                                 </div>
                                 <div class="form-group">
                                 	<button type="submit" class="btn btn-default">

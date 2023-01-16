@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,6 +61,7 @@ public class BoardController {
 	
 	
 	@PostMapping("/register")
+	@PreAuthorize("isAuthenticated()") // 로그인을 통해 인증이 되야만 해당 매핑 기능 사용 가능
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		
 		log.info("register : "+board);
@@ -75,6 +77,7 @@ public class BoardController {
 	}
 	// 연결을 위한 임시 매핑 주소
 	@GetMapping("/register")
+	@PreAuthorize("isAuthenticated()")
 	public void register() {
 		log.info("register GetMapping..............................................");
 	}
