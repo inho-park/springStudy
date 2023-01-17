@@ -3,6 +3,7 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -126,7 +127,7 @@
 	                							2022-12-09
 	                						</small>
 	                					</div>
-	                					<p>占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙..</p>
+	                					<p>유저빵빵</p>
                 					</div>
                 				</ul>
                 			</div>
@@ -184,6 +185,15 @@
     				<button id="modalCloseBtn" type="button" class="btn btn-default">
     					Close
     				</button>
+    				
+    				<sec:authentication property="principal" var="pinfo"/>
+    					<sec:authorize access="isAuthenticated()">
+    						<c:if test="${pinfo.username eq board.writer }">
+    							<button data-oper="modify" class="btn btn-default">
+    								Modify
+    							</button>
+    						</c:if>
+    					</sec:authorize>
     			</div>
     		</div>
     	</div>
