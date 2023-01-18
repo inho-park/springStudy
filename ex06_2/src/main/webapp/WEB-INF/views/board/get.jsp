@@ -3,6 +3,7 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -60,10 +61,15 @@
                 					<input class="form-control" name="writer"
                 					value='<c:out value="${board.writer }"/>' readonly="readonly">   
                 				</div>
-                				<button data-oper="modify" class="btn btn-default"
-                				style="border: 1px solid #dddddd">
-                					Modify
-                				</button>
+                				<sec:authentication property="principal" var="pinfo"/>
+	                				<sec:authorize access="isAuthenticated()">
+		                				<c:if test="${pinfo.username eq board.writer }">
+			                				<button data-oper="modify" class="btn btn-default"
+			                				style="border: 1px solid #dddddd">
+			                					Modify
+			                				</button>		
+		                				</c:if>
+	                				</sec:authorize>
                 				<button data-oper="list" class="btn btn-info">
                 					List
                 				</button>
@@ -107,9 +113,11 @@
                 		<div class="panel panel-default">
                 			<div class="panel-heading">
                 				<i class="fa fa-comments fa-fw"></i> Reply
+                				<sec:authorize access="isAuthenticated()">
                 				<button id="addReplyBtn" class="btn btn-primary" style="float: right;">
                 					New Reply
                 				</button>
+                				</sec:authorize>
                 			</div>
                 			
                 			<!-- /.panel-heading -->
@@ -126,7 +134,7 @@
 	                							2022-12-09
 	                						</small>
 	                					</div>
-	                					<p>占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙..</p>
+	                					<p>사용자빵빵</p>
                 					</div>
                 				</ul>
                 			</div>
@@ -256,6 +264,12 @@
 		var modalModBtn = $("#modalModBtn");
 		var modalRemoveBtn = $("#modalRemoveBtn");
 		var modalRegisterBtn = $("#modalRegisterBtn");
+		
+		
+		var replyer = null;
+		<sec:authorize access="isAuthenticated()">
+			replyer = '<sec:authentication property="principal.username"/>';
+		</sec:authorize>
 		
 		// 占쏙옙짜 占쏙옙占쏙옙占� 占쏙옙 占쌥깍옙 占쏙옙튼 占쏙옙占쏙옙占� => 占쏙옙占� 占쌜쇽옙占쏙옙 占쏙옙 占쏙옙占�
 		$("#addReplyBtn").on("click", function(e) {

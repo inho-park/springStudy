@@ -36,7 +36,8 @@
                                             placeholder="Last Name">
                                     </div>
                                 </div>  -->
-                                <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+                                <input type="hidden" name="${_csrf.parameterName }" 
+                                	value="${_csrf.token }"/>
                                 <div class="form-group">
                                 	<label>Title</label>
                                     <input type="text" class="form-control form-control-user"
@@ -46,20 +47,14 @@
                                 <div class="form-group">
                                 	<label>Writer</label>
                                     <input type="text" class="form-control form-control-user"
-                                    	 name="writer"
-                                        placeholder="작가 이름">
+                                    	name="writer"
+                                    	value='<sec:authentication property="principal.username"/>'
+                                        readonly="readonly">
                                 </div>
                                 <div class="form-group">
                                 	<label>Book Content</label>
                                 	<textarea class="form-control" rows="3" name="content">
                                 	</textarea>
-                                </div>
-                                <div class="form-group">
-                                	<label>Registrant</label>
-                                    <input type="text" class="form-control form-control-user"
-                                    	 name="registrant"
-                                        value='<sec:authentication property="principal.username"/>'
-                                        readonly="readonly">
                                 </div>
                                 <div class="form-group">
                                 	<button type="submit" class="btn btn-default">
@@ -183,6 +178,10 @@
 				});
 				uploadUL.append(str);
 			}
+		
+			
+			var csrfHeaderName = "${_csrf.headerName}";
+			var csrfTokenValue = "${_csrf.token}";
 			
 			$("input[type='file']").change(function(e){
 				
@@ -204,6 +203,9 @@
 					url: '${path}/uploadAjaxAction',
 					processData: false,
 					contentType: false,
+					beforeSend: function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
 					data: formData,
 					type: 'POST',
 					dataType: 'json',
@@ -224,6 +226,9 @@
 				$.ajax({
 					url : '${path}/deleteFile',
 					data : {fileName: targetFile, type:type},
+					beforeSend: function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
 					dataType : 'text',
 					type : 'POST',
 					success : function(result) {
@@ -258,5 +263,8 @@
 				formObj.append(str).submit();
 				
 			});
+		
+		
 		});
+		
 	</script>
