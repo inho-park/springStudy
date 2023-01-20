@@ -12,10 +12,12 @@
 		</param-value>
 	</context-param>
 	
+	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -26,15 +28,23 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+	
+	<!-- file 저장을 위한 설정 -->
+		<multipart-config>
+			<location>D:/folderForPractice</location>
+			<max-file-size>20971520</max-file-size> <!-- 1MB * 20 -->
+			<max-request-size>41943040</max-request-size> <!-- 40MB -->
+			<file-size-threshold>20971520</file-size-threshold> <!-- 20MB -->
+		</multipart-config>
 	</servlet>
-		
+	
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 
-
+	<!-- encoding 을 위한 설정 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -43,12 +53,15 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
+
+	<!-- 모든 경로를 필터를 거쳐가도록 설정 -->
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping>	
 	
 	
+	<!-- filterChain 만으로 security 검사를 자동으로 해줌 -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -57,6 +70,5 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>	
-	
 	
 </web-app>

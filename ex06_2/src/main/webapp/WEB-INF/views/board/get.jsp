@@ -271,10 +271,19 @@
 			replyer = '<sec:authentication property="principal.username"/>';
 		</sec:authorize>
 		
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		
+		// ajax spring security header
+		$(document).ajaxSend(function(e, xhr, options){
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		});
+		
 		// 占쏙옙짜 占쏙옙占쏙옙占� 占쏙옙 占쌥깍옙 占쏙옙튼 占쏙옙占쏙옙占� => 占쏙옙占� 占쌜쇽옙占쏙옙 占쏙옙 占쏙옙占�
 		$("#addReplyBtn").on("click", function(e) {
 			
 			modal.find("input").val("");
+			modal.find("input[name='replyer']").val(replyer);
 			modalInputReplyDate.closest("div").hide(); // div 채占쏙옙 占쏙옙占쏙옙
 			modal.find("button[id!='modalCloseBtn']").hide(); // 
 			
@@ -339,17 +348,32 @@
 		modalModBtn.on("click",function(e) {
 			
 			// data-rno 占쌈쇽옙 占쏙옙占�
-			var reply = {rno : modal.data("rno"),
-						reply : modalInputReply.val()};
+			var reply = {
+					rno : modal.data("rno"),
+					reply : modalInputReply.val(),
+					replyer : originalReplyer
+			};
 			
+			if(!replyer) {
+				alert("로그인 후 수정 가능");
+				modal.modal("hide");
+				return;
+			}
+			
+			console.log("Original Replyer : " + originalReplyer);
+			
+			if(replyer != originalReplyer) {
+				alert("자신이 작성한 댓글만 수정 가능");
+				modal.modal("hide");
+				return;
+			}
 			
 			replyService.update(reply, function(result){
 				
 				alert(result);
-				
 				modal.modal("hide");
 				showList(pageNum);
-			})
+			});
 		});
 		
 		// 占쏙옙占� 占쏙옙占쏙옙 占쏙옙占�
@@ -357,11 +381,27 @@
 			
 			// data-rno 占쌈쇽옙 占쏙옙占�
 			var rno = modal.data("rno");
+			console.log("RNO : " + rno);
+			console.log("REPLYER : " + replyer);
+			
+			if(!replyer) {
+				alert("로그인 후 삭제가 가능합니다");
+				modal.modal("hide");
+				return
+			}
+			
+			var originalReplyer = modalInputReplyer.val();
+			console.log("Original Replyer : " + originalReplyer); // 댓글의 원래 작성자
+			
+			if(replyer != originalReplyer) {
+				alert("자신이 작성한 댓글만 삭제 가능");
+				modal.modal("hide");
+				return;
+			}
 			
 			replyService.remove(rno, function(result){
 				
 				alert(result);
-				
 				modal.modal("hide");
 				showList(pageNum);
 			});

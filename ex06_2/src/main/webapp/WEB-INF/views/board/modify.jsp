@@ -71,7 +71,7 @@
                                	 
                                	 <sec:authentication property="principal" var="pinfo"/>
                                	 	<sec:authorize access="isAuthenticated()">
-                               	 		<c:if test="${pinfo.username eq = board.writer }">
+                               	 		<c:if test="${pinfo.username eq board.writer }">
 			                               	<button type="submit" data-oper='modify' 
 			                               	class="btn btn-primary">Modify
 			                               	</button>

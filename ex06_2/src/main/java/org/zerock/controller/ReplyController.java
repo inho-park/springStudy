@@ -4,6 +4,7 @@ package org.zerock.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ public class ReplyController {
 	private ReplyService service;
 	
 	// 댓글을 JSON 형태로 받아와 RequestBody 를 통해 ReplyVO 형태로 바꾼 후 tbl_Reply 에 insert
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping(
 			value = "new",
 			consumes = "application/json",
@@ -84,12 +86,14 @@ public class ReplyController {
 	
 	
 	// rno 에 해당된 댓글 지우기
-	@DeleteMapping(value = "/{rno}",
-				produces = { MediaType.TEXT_PLAIN_VALUE })
+	@PreAuthorize("principal.username == #vo.replyer")
+	@DeleteMapping("/{rno}")
 	public ResponseEntity<String> remove(
-			@PathVariable("rno") Long rno) {
+			@PathVariable("rno") Long rno,
+			@RequestBody ReplyVO vo) {
 		
 		log.info("delete : " + rno);
+		log.info("Replyer : " + vo.getReplyer());
 		
 		return service.remove(rno) == 1
 				? new ResponseEntity<>("success",HttpStatus.OK)
@@ -98,14 +102,15 @@ public class ReplyController {
 	
 	
 	// rno 에 해당된 댓글 수정하기
+	@PreAuthorize("principal.username == #vo.replyer")
 	@RequestMapping(value = "/{rno}",
-				method = {RequestMethod.PUT , RequestMethod.PATCH },
-				produces = { MediaType.TEXT_PLAIN_VALUE })
+				method = {RequestMethod.PUT , RequestMethod.PATCH })
 	public ResponseEntity<String> modify(
 			@PathVariable("rno") Long rno,
 			@RequestBody ReplyVO vo) {
 		
-		log.info("modify : "+rno);
+		log.info("rno : " + rno);
+		log.info("modify : " + vo);
 		
 		vo.setRno(rno);
 		

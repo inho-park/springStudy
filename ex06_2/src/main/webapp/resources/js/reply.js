@@ -24,7 +24,7 @@ var replyService = (function() {
 					error(er);
 				}
 			}
-		})
+		});
 	}
 	
 	
@@ -54,10 +54,12 @@ var replyService = (function() {
 	
 	
 	// 댓글을 삭제하기 위한 함수
-	function remove(rno, callback, error) {
+	function remove(rno, replyer, callback, error) {
 		$.ajax({
 			type : "delete",
 			url : '/reply/' + rno,
+			data : JSON.stringify({rno:rno, replyer:replyer}),
+			contentType : "application/json; charset=utf-8",
 			success : function(deleteResult, status, xhr) {
 				if (callback) {
 					callback(deleteResult);
@@ -68,7 +70,7 @@ var replyService = (function() {
 					error(er);
 				}
 			}
-		})
+		});
 	}
 	
 	
